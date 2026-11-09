@@ -4,7 +4,7 @@
 
 **مینی‌دوره‌ی رایگان و فارسی افزایش سرعت سایت و بهینه‌سازی برای PageSpeed Insights گوگل**؛ با توضیح ساده و خودمونی همه‌ی معیارها: Core Web Vitals (یعنی LCP، INP و CLS)، نمره‌ی Performance در Lighthouse، معیارهای FCP، TBT و Speed Index، دسترسی‌پذیری (Accessibility)، اصول درست (Best Practices) و سئوی پایه.
 
-🔗 **دیدن دوره به‌صورت آنلاین:** [NimaNikzad.github.io/PageSpeedInsights](https://NimaNikzad.github.io/PageSpeedInsights)
+🔗 **دیدن دوره به‌صورت آنلاین:** [nimanikzad.github.io/PageSpeedInsights](https://nimanikzad.github.io/PageSpeedInsights/)
 
 ---
 
@@ -73,11 +73,10 @@
 
 برای انتشار رایگان روی **GitHub Pages**:
 
-- ۱. یه مخزن (Repository) عمومی بساز، مثلاً با اسم `pagespeed-course`.
+- ۱. یه مخزن (Repository) عمومی بساز، مثلاً با اسم `PageSpeedInsights`.
 - ۲. فایل‌های `index.html` و `README.md` رو آپلود کن.
 - ۳. برو به **Settings ← Pages**، بخش Source رو روی شاخه‌ی `main` و پوشه‌ی `/ (root)` بذار و ذخیره کن.
-- ۴. بعد از یکی دو دقیقه، سایت روی آدرس `https://USERNAME.github.io/pagespeed-course/` بالا میاد.
-- ۵. توی `index.html` و همین فایل، کلمه‌ی `USERNAME` رو با نام کاربری گیت‌هاب خودت عوض کن (تگ canonical و og:url).
+- ۴. بعد از یکی دو دقیقه، سایت روی آدرس `https://nimanikzad.github.io/PageSpeedInsights/` بالا میاد.
 
 ## 🔍 نکته‌های سئو برای همین مخزن
 
