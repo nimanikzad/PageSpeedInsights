@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>آموزش کامل PageSpeed Insights از صفر تا صد | مینی‌دوره رایگان بهینه‌سازی سرعت سایت</title>
+<meta name="description" content="مینی‌دوره رایگان و فارسی بهینه‌سازی سایت برای PageSpeed Insights گوگل: توضیح ساده‌ی Core Web Vitals (LCP، INP، CLS)، FCP، TBT، Speed Index، نمره‌ی Lighthouse، دسترسی‌پذیری، Best Practices و سئو، با چک‌لیست و ماشین‌حساب نمره.">
+<meta name="keywords" content="PageSpeed Insights, پیج اسپید, افزایش سرعت سایت, بهینه سازی سرعت سایت, Core Web Vitals, LCP, INP, CLS, Lighthouse, لایت هاوس, سئو تکنیکال, آموزش پیج اسپید گوگل">
+<meta name="author" content="مینی‌دوره PageSpeed فارسی">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://nimanikzad.github.io/PageSpeedInsights/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:title" content="آموزش کامل PageSpeed Insights از صفر تا صد">
+<meta property="og:description" content="مینی‌دوره‌ی خودمونی و رایگان برای سبز کردن نمره‌ی PageSpeed سایتت.">
+<meta property="og:url" content="https://nimanikzad.github.io/PageSpeedInsights/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9A%80%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap">
+
+<script>
+/* تم و تنظیمات قبل از رندر اعمال می‌شن تا صفحه چشمک نزنه (و CLS نگیریم!) */
+(function(){
+  var d=document.documentElement,s={};
+  try{s=JSON.parse(localStorage.getItem('psc-settings')||'{}')}catch(e){}
+  var t=s.theme||((window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');
+  d.setAttribute('data-theme',t);
+  if(s.fs)d.style.setProperty('--fs',s.fs+'%');
+  if(s.lh)d.style.setProperty('--lh',s.lh);
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "آموزش کامل PageSpeed Insights از صفر تا صد",
+  "description": "مینی‌دوره رایگان فارسی برای بهینه‌سازی سرعت و کیفیت سایت بر اساس معیارهای PageSpeed Insights و Lighthouse: Core Web Vitals، نمره‌ی Performance، دسترسی‌پذیری، Best Practices و سئو.",
+  "inLanguage": "fa",
+  "isAccessibleForFree": true,
+  "educationalLevel": "Beginner to Advanced",
+  "teaches": ["LCP", "INP", "CLS", "FCP", "TBT", "Speed Index", "Lighthouse", "PageSpeed Insights"],
+  "provider": {"@type": "Organization", "name": "مینی‌دوره PageSpeed فارسی"},
+  "hasCourseInstance": {"@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT3H"},
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "Free"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "PageSpeed Insights چیه؟", "acceptedAnswer": {"@type": "Answer", "text": "ابزار رایگان گوگل برای سنجش سرعت و کیفیت صفحه‌های وب روی موبایل و دسکتاپ. هم داده‌ی واقعی کاربران Chrome رو نشون می‌ده و هم یه تست آزمایشگاهی با Lighthouse اجرا می‌کنه."}},
+    {"@type": "Question", "name": "نمره‌ی خوب PageSpeed چنده؟", "acceptedAnswer": {"@type": "Answer", "text": "نمره‌ی ۹۰ تا ۱۰۰ سبز و خوبه، ۵۰ تا ۸۹ نارنجی و نیازمند بهبود، و زیر ۵۰ قرمز و ضعیف. ولی برای گوگل قبول شدن Core Web Vitals در داده‌ی واقعی کاربرها مهم‌تر از خود نمره است."}},
+    {"@type": "Question", "name": "Core Web Vitals چه معیارهایی هستن؟", "acceptedAnswer": {"@type": "Answer", "text": "سه معیار LCP (سرعت نمایش محتوای اصلی، خوب: ۲.۵ ثانیه یا کمتر)، INP (سرعت پاسخ به تعامل، خوب: ۲۰۰ میلی‌ثانیه یا کمتر) و CLS (پایداری چیدمان، خوب: ۰.۱ یا کمتر)."}},
+    {"@type": "Question", "name": "چرا نمره‌ی PageSpeed هر بار عوض می‌شه؟", "acceptedAnswer": {"@type": "Answer", "text": "چون تست آزمایشگاهی به وضعیت شبکه، سرور و اسکریپت‌های شخص ثالث در همون لحظه بستگی داره. چند بار تست بگیر و میانه‌ش رو ملاک بذار."}}
+  ]
+}
+</script>
+
+<style>
+:root{
+  --fs:100%;
+  --lh:1.95;
+  --radius:18px;
+  --maxw:780px;
+  --good:#0cce6b;--avg:#ffa400;--poor:#ff4e42;
+}
+html[data-theme="light"]{
+  --bg:#f6f7fb;--bg2:#ffffff;--card:#ffffff;--soft:#eef0fb;--line:#e3e6f0;
+  --text:#1b1e2e;--muted:#5d6380;--accent:#4f46e5;--accent2:#0ea5a4;
+  --accent-soft:#eceafe;--code-bg:#141827;--code-text:#e7e9f5;--shadow:0 10px 30px -12px rgba(30,35,90,.18);
+  --good-t:#05834a;--avg-t:#a35d00;--poor-t:#c42b20;
+  color-scheme:light;
+}
+html[data-theme="dark"]{
+  --bg:#0b1020;--bg2:#10162b;--card:#131a33;--soft:#1a2243;--line:#26305a;
+  --text:#e8eaf6;--muted:#a3a9c9;--accent:#8b84ff;--accent2:#2dd4bf;
+  --accent-soft:#221f4d;--code-bg:#070a16;--code-text:#e7e9f5;--shadow:0 10px 30px -12px rgba(0,0,0,.6);
+  --good-t:#3ee38c;--avg-t:#ffc155;--poor-t:#ff7a70;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{overflow-x:clip;font-size:var(--fs);scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;
+  font-size:1.0625rem;line-height:var(--lh);letter-spacing:0;
+  -webkit-font-smoothing:antialiased;transition:background .3s,color .3s;
+}
+a{color:var(--accent)}
+h1,h2,h3,h4{line-height:1.5;margin:0 0 .6em}
+p{margin:0 0 1em}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em;background:var(--soft);padding:.1em .45em;border-radius:6px;direction:ltr;unicode-bidi:isolate}
+pre{direction:ltr;text-align:left;background:var(--code-bg);color:var(--code-text);padding:1.1rem 1.2rem;border-radius:14px;overflow:auto;line-height:1.7;font-size:.86rem;margin:0 0 1.2em}
+pre code{background:none;padding:0;color:inherit;font-size:inherit}
+.c-com{color:#7f89b5}.c-tag{color:#ff8fab}.c-att{color:#ffd479}.c-str{color:#8be9b0}
+.skip{position:absolute;inset-inline-start:1rem;top:0;transform:translateY(-120%);background:var(--accent);color:#fff;padding:.5rem 1rem;z-index:100;border-radius:0 0 10px 10px}
+.skip:focus{transform:none}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* progress */
+#readbar{position:fixed;top:0;inset-inline:0;height:4px;z-index:60;background:transparent}
+#readbar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent2),var(--accent));transform-origin:right}
+
+/* header */
+header.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1240px;margin:0 auto;padding:.7rem 1.2rem;display:flex;align-items:center;gap:.8rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:800;text-decoration:none;color:var(--text);font-size:1.05rem}
+.brand .logo{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:1.1rem}
+.spacer{flex:1}
+.btn-ic{border:1px solid var(--line);background:var(--card);color:var(--text);height:42px;min-width:42px;padding:0 .8rem;border-radius:12px;cursor:pointer;font:inherit;font-size:.95rem;display:inline-flex;align-items:center;gap:.4rem;transition:transform .15s,border-color .2s}
+.btn-ic:hover{border-color:var(--accent);transform:translateY(-1px)}
+#menuBtn{display:none}
+
+/* settings panel */
+#settings{position:fixed;top:72px;inset-inline-end:1.2rem;width:min(330px,calc(100vw - 2rem));background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.2rem;z-index:70;display:none}
+#settings.open{display:block;animation:pop .2s ease}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+#settings h3{font-size:1rem;margin-bottom:1rem}
+.set-row{margin-bottom:1.1rem}
+.set-row label,.set-row .lbl{display:flex;justify-content:space-between;font-size:.9rem;color:var(--muted);margin-bottom:.45rem}
+.seg{display:flex;gap:.4rem}
+.seg button{flex:1;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:10px;padding:.5rem;cursor:pointer;font:inherit;font-size:.92rem}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.reset{width:100%;border:1px dashed var(--line);background:transparent;color:var(--muted);border-radius:10px;padding:.5rem;cursor:pointer;font:inherit;font-size:.9rem}
+
+/* layout */
+.wrap{max-width:1240px;margin:0 auto;padding:0 1.2rem;display:grid;grid-template-columns:270px minmax(0,1fr);gap:2.4rem}
+aside.toc{position:sticky;top:84px;align-self:start;max-height:calc(100vh - 100px);overflow:auto;padding:1.2rem 0 2rem}
+.toc-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1rem}
+.toc-prog{display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem;font-size:.9rem;color:var(--muted)}
+.toc-prog .bar{flex:1;height:8px;border-radius:99px;background:var(--soft);overflow:hidden}
+.toc-prog .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent2),var(--accent));transition:width .4s}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li a{display:flex;align-items:center;gap:.55rem;padding:.42rem .6rem;border-radius:10px;color:var(--muted);text-decoration:none;font-size:.9rem;line-height:1.6}
+.toc li a:hover{background:var(--soft);color:var(--text)}
+.toc li a.active{background:var(--accent-soft);color:var(--accent);font-weight:700}
+.toc .num{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:var(--soft);font-size:.78rem;font-weight:700}
+.toc li a.done .num{background:var(--good);color:#04331c}
+main{min-width:0;padding-bottom:4rem}
+
+/* hero */
+.hero{margin:1.6rem 0 2.4rem;padding:2.4rem;border-radius:28px;background:
+  radial-gradient(120% 90% at 100% 0%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 60%),
+  radial-gradient(90% 80% at 0% 100%,color-mix(in srgb,var(--accent2) 20%,transparent),transparent 60%),var(--card);
+  border:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;align-items:center}
+.pill{display:inline-flex;gap:.4rem;align-items:center;font-size:.85rem;font-weight:700;background:var(--accent-soft);color:var(--accent);padding:.3rem .8rem;border-radius:99px;margin-bottom:1rem}
+.hero h1{font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:900;line-height:1.45}
+.hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:var(--muted);font-size:1.08rem;max-width:56ch}
+.hero-stats{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
+.hero-stats span{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:.4rem .8rem;font-size:.88rem}
+.cta{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent) 60%,var(--accent2)));color:#fff;text-decoration:none;font-weight:800;padding:.8rem 1.4rem;border-radius:14px;box-shadow:0 12px 24px -12px var(--accent)}
+.gauge{width:190px;height:190px;position:relative}
+.gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+.gauge .val{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-size:2.8rem;font-weight:900;color:var(--good-t);line-height:1.2}
+.gauge .val small{display:block;font-size:.8rem;color:var(--muted);font-weight:500}
+
+/* lessons */
+section.lesson{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:2rem 2.1rem;margin-bottom:1.6rem;box-shadow:var(--shadow)}
+.lesson-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.2rem}
+.lesson-head .badge{flex:none;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.6rem;background:var(--accent-soft)}
+.lesson-head .meta{font-size:.82rem;color:var(--muted);font-weight:500}
+.lesson h2{font-size:1.5rem;font-weight:800;margin:0}
+.lesson h3{font-size:1.16rem;font-weight:800;margin-top:1.6em}
+.prose{max-width:var(--maxw);overflow-wrap:break-word}
+.prose code{overflow-wrap:anywhere}
+.prose ul,.prose ol{padding-inline-start:1.4em;margin:0 0 1.1em}
+.prose li{margin-bottom:.35em}
+.tldr{background:linear-gradient(135deg,var(--accent-soft),transparent);border:1px solid var(--line);border-inline-start:5px solid var(--accent);border-radius:14px;padding:1rem 1.2rem;margin:0 0 1.4rem}
+.tldr b{color:var(--accent)}
+.note,.warn,.tip{border-radius:14px;padding:.9rem 1.1rem;margin:1.2rem 0;border:1px solid var(--line)}
+.tip{background:color-mix(in srgb,var(--good) 10%,var(--card))}
+.warn{background:color-mix(in srgb,var(--avg) 13%,var(--card))}
+.note{background:var(--soft)}
+.analogy{background:color-mix(in srgb,var(--accent2) 11%,var(--card));border:1px dashed color-mix(in srgb,var(--accent2) 50%,var(--line));border-radius:14px;padding:.9rem 1.1rem;margin:1.2rem 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin:1.2rem 0}
+.mcard{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:1.1rem}
+.mcard .ab{font-size:1.4rem;font-weight:900;direction:ltr;display:inline-block}
+.mcard .fa{display:block;color:var(--muted);font-size:.88rem;margin-bottom:.6rem}
+.scale{display:flex;border-radius:10px;overflow:hidden;font-size:.78rem;font-weight:700;margin-top:.6rem}
+.scale span{flex:1;padding:.35rem .3rem;text-align:center;line-height:1.5}
+.s-g{background:color-mix(in srgb,var(--good) 22%,transparent);color:var(--good-t)}
+.s-a{background:color-mix(in srgb,var(--avg) 22%,transparent);color:var(--avg-t)}
+.s-p{background:color-mix(in srgb,var(--poor) 20%,transparent);color:var(--poor-t)}
+table{width:100%;border-collapse:collapse;margin:1rem 0 1.4rem;font-size:.95rem}
+th,td{padding:.7rem .8rem;border-bottom:1px solid var(--line);text-align:start;vertical-align:top}
+th{background:var(--soft);font-weight:800}
+.tbl{overflow:auto;border:1px solid var(--line);border-radius:14px}
+.tbl table{margin:0}
+details.acc{border:1px solid var(--line);border-radius:14px;margin-bottom:.7rem;background:var(--bg);overflow:hidden}
+details.acc summary{cursor:pointer;padding:.85rem 1.1rem;font-weight:700;list-style:none;display:flex;align-items:center;gap:.6rem}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary::after{content:"+";margin-inline-start:auto;font-size:1.3rem;color:var(--accent);transition:transform .2s}
+details.acc[open] summary::after{transform:rotate(45deg)}
+details.acc .body{padding:0 1.1rem 1rem}
+.en{direction:ltr;unicode-bidi:isolate;font-size:.85em;color:var(--muted);font-weight:500}
+.done-btn{margin-top:1.4rem;display:inline-flex;gap:.5rem;align-items:center;border:2px solid var(--line);background:transparent;color:var(--text);padding:.6rem 1.1rem;border-radius:12px;cursor:pointer;font:inherit;font-weight:700}
+.done-btn[aria-pressed="true"]{background:var(--good);border-color:var(--good);color:#04331c}
+.steps{counter-reset:s;list-style:none;padding:0!important}
+.steps li{counter-increment:s;position:relative;padding-inline-start:2.8rem;margin-bottom:.9rem}
+.steps li::before{content:counter(s,persian);position:absolute;inset-inline-start:0;top:.1rem;width:2rem;height:2rem;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.9rem;line-height:1}
+
+/* calculator */
+.calc{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:1.3rem;display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:1.4rem;align-items:center;margin:1.2rem 0}
+.calc .row{margin-bottom:.9rem}
+.calc .row label{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:.2rem}
+.calc .row output{font-weight:800;direction:ltr;unicode-bidi:isolate}
+.calc .side{text-align:center}
+.calc .gauge{width:170px;height:170px;margin:0 auto}
+.contrib{font-size:.82rem;color:var(--muted);margin-top:.6rem;line-height:1.9}
+
+/* quiz & checklist */
+.q{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:1.1rem;margin-bottom:1rem}
+.q p{font-weight:700;margin-bottom:.6rem}
+.q label{display:flex;gap:.6rem;align-items:flex-start;padding:.5rem .7rem;border-radius:10px;cursor:pointer;border:1px solid transparent}
+.q label:hover{background:var(--soft)}
+.q label.right{border-color:var(--good);background:color-mix(in srgb,var(--good) 12%,transparent)}
+.q label.wrong{border-color:var(--poor);background:color-mix(in srgb,var(--poor) 10%,transparent)}
+.q .why{display:none;font-size:.92rem;color:var(--muted);margin-top:.5rem}
+.q.answered .why{display:block}
+input[type=radio],input[type=checkbox]{accent-color:var(--accent);width:1.1em;height:1.1em;margin-top:.45em;flex:none}
+.chk label{display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .3rem;border-bottom:1px dashed var(--line);cursor:pointer}
+.chk h4{margin:1.2rem 0 .4rem;font-size:1rem}
+#quizScore{font-weight:800}
+footer{border-top:1px solid var(--line);padding:2rem 1.2rem;text-align:center;color:var(--muted);font-size:.9rem}
+.toast{visibility:hidden;position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%) translateY(150%);background:var(--text);color:var(--bg);padding:.7rem 1.2rem;border-radius:12px;font-size:.92rem;transition:transform .3s;z-index:80}
+.toast.show{visibility:visible;transform:translateX(-50%) translateY(0)}
+#toTop{position:fixed;bottom:1.2rem;inset-inline-start:1.2rem;z-index:40;opacity:0;pointer-events:none;transition:opacity .3s}
+#toTop.show{opacity:1;pointer-events:auto}
+
+@media (max-width:980px){
+  .wrap{grid-template-columns:1fr;gap:0}
+  #menuBtn{display:inline-flex}
+  aside.toc{position:fixed;top:0;bottom:0;inset-inline-start:0;width:min(320px,86vw);max-height:none;align-self:stretch;height:100dvh;overflow:auto;z-index:65;background:var(--bg);padding:1rem;transform:translateX(110%);visibility:hidden;transition:transform .3s,visibility .3s;box-shadow:var(--shadow)}
+  aside.toc.open{transform:none;visibility:visible}
+  #scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:64;display:none}
+  #scrim.show{display:block}
+  .hero{grid-template-columns:1fr;padding:1.6rem;text-align:start}
+  .hero .gauge{margin:0 auto;width:150px;height:150px}
+  .calc{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  section.lesson{padding:1.4rem 1.1rem}
+  .brand .txt{display:none}
+  .btn-ic .lbl{display:none}
+}
+@media print{
+  header.top,aside.toc,#settings,.done-btn,#toTop,#readbar{display:none!important}
+  .wrap{display:block}
+  section.lesson{box-shadow:none;break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">پرش به محتوای اصلی</a>
+<div id="readbar" aria-hidden="true"><span></span></div>
+
+<header class="top">
+  <div class="top-in">
+    <button class="btn-ic" id="menuBtn" aria-label="باز کردن فهرست درس‌ها" aria-controls="toc" aria-expanded="false">☰</button>
+    <a class="brand" href="#top"><span class="logo" aria-hidden="true">⚡</span><span class="txt">مینی‌دوره‌ی PageSpeed</span></a>
+    <div class="spacer"></div>
+    <button class="btn-ic" id="themeBtn" aria-label="تغییر حالت تیره و روشن"><span id="themeIc" aria-hidden="true">🌙</span><span class="lbl" id="themeLbl">حالت تیره</span></button>
+    <button class="btn-ic" id="setBtn" aria-label="تنظیمات نمایش متن" aria-controls="settings" aria-expanded="false"><span aria-hidden="true">Aa</span><span class="lbl">تنظیمات متن</span></button>
+  </div>
+</header>
+
+<div id="settings" role="dialog" aria-label="تنظیمات نمایش">
+  <h3>🎛️ صفحه رو مال خودت کن</h3>
+  <div class="set-row">
+    <div class="lbl"><span>اندازه‌ی متن</span><b id="fsVal">۱۰۰٪</b></div>
+    <div class="seg">
+      <button id="fsDown" aria-label="کوچک‌تر کردن متن">➖ کوچک‌تر</button>
+      <button id="fsUp" aria-label="بزرگ‌تر کردن متن">➕ بزرگ‌تر</button>
+    </div>
+  </div>
+  <div class="set-row">
+    <label for="lhRange"><span>فاصله‌ی بین خط‌ها</span><b id="lhVal">۱٫۹۵</b></label>
+    <input type="range" id="lhRange" min="1.5" max="2.6" step="0.05" value="1.95">
+  </div>
+  <div class="set-row">
+    <div class="lbl"><span>پهنای متن</span></div>
+    <div class="seg" id="widthSeg">
+      <button data-w="660px">باریک</button>
+      <button data-w="780px" aria-pressed="true">معمولی</button>
+      <button data-w="100%">پهن</button>
+    </div>
+  </div>
+  <div class="set-row">
+    <div class="lbl"><span>حالت نمایش</span></div>
+    <div class="seg" id="themeSeg">
+      <button data-t="light">☀️ روشن</button>
+      <button data-t="dark">🌙 تیره</button>
+    </div>
+  </div>
+  <button class="reset" id="resetSet">↺ برگرد به تنظیمات پیش‌فرض</button>
+</div>
+
+<div id="scrim"></div>
+
+<div class="wrap" id="top">
+  <aside class="toc" id="toc" aria-label="فهرست درس‌ها">
+    <div class="toc-card">
+      <div class="toc-prog"><span>پیشرفت</span><div class="bar"><i id="progBar"></i></div><b id="progTxt">۰٪</b></div>
+      <nav><ol id="tocList"></ol></nav>
+    </div>
+  </aside>
+
+  <main id="content">
+    <div class="hero">
+      <div>
+        <span class="pill">🎓 مینی‌دوره‌ی رایگان · به‌روز با Lighthouse 13</span>
+        <h1>PageSpeed Insights رو <span class="grad">از صفر تا صد</span> یاد بگیر و سایتت رو سبز کن 🟢</h1>
+        <p class="lead">بدون حرف‌های پیچیده و اصطلاحات ترسناک. قدم‌به‌قدم می‌فهمی گوگل دقیقاً چی رو می‌سنجه، هر عدد توی گزارش یعنی چی و چطور درستش کنی.</p>
+        <div class="hero-stats">
+          <span>📚 ۱۴ درس</span><span>⏱️ حدود ۳ ساعت</span><span>🧮 ماشین‌حساب نمره</span><span>✅ چک‌لیست نهایی</span><span>🧠 آزمونک</span>
+        </div>
+        <a class="cta" href="#l1">بزن بریم 🚀</a>
+      </div>
+      <div class="gauge" aria-hidden="true">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--soft)" stroke-width="11"/><circle id="heroRing" cx="60" cy="60" r="52" fill="none" stroke="var(--good)" stroke-width="11" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" style="transition:stroke-dashoffset 1.6s ease"/></svg>
+        <div class="val"><div><span id="heroNum">۰</span><small>هدف ما</small></div></div>
+      </div>
+    </div>
+
+    <!-- ===================== ۱ ===================== -->
+    <section class="lesson" id="l1" data-title="PageSpeed Insights چیه؟">
+      <div class="lesson-head"><div class="badge">🔍</div><div><div class="meta">درس ۱ · ۸ دقیقه</div><h2>اصلاً PageSpeed Insights چیه؟</h2></div></div>
+      <div class="prose">
+        <div class="tldr"><b>خلاصه در یک خط:</b> یه ابزار رایگان از گوگل که آدرس صفحه رو می‌گیره و می‌گه این صفحه برای کاربر واقعی چقدر سریع، روون، قابل‌استفاده و استاندارده.</div>
+        <p>ابزار <a href="https://pagespeed.web.dev/" rel="noopener" target="_blank">PageSpeed Insights</a> (که از اینجا به بعد بهش می‌گیم <b>PSI</b>) آدرس صفحه رو می‌گیره و دو جور جواب بهت می‌ده: یکی بر اساس تجربه‌ی <b>کاربرهای واقعی</b>، یکی بر اساس یه <b>تست آزمایشگاهی</b> که همون لحظه اجرا می‌شه. فرق این دوتا رو اگه بفهمی، نصف راه رو رفتی.</p>
+        <div class="analogy">🩺 <b>یه تشبیه ساده:</b> داده‌ی واقعی مثل اینه که از ۱۰۰۰ تا مشتری رستوران بپرسی «غذات کِی رسید؟». تست آزمایشگاهی مثل اینه که خودت یه بار با کرنومتر بری بشینی و سفارش بدی. اولی واقعی‌تره، دومی برای پیدا کردن مشکل‌ها عالیه.</div>
+
+        <h3>👥 بخش اول: داده‌ی واقعی <span class="en">(Field Data)</span></h3>
+        <ul>
+          <li>از کاربرهای واقعی مرورگر Chrome جمع می‌شه (به این مجموعه می‌گن <b>CrUX</b>).</li>
+          <li>مربوط به <b>۲۸ روز گذشته</b> است، پس اگه امروز چیزی رو درست کنی، تغییرش کم‌کم و طی چند هفته دیده می‌شه.</li>
+          <li>ملاکش <b>صدک ۷۵</b> است؛ یعنی باید دست‌کم ۷۵ درصد بازدیدها تجربه‌ی خوبی داشته باشن تا اون معیار سبز بشه.</li>
+          <li>اگه سایتت بازدید کمی داشته باشه، این بخش خالی می‌مونه. نگران نباش، طبیعیه.</li>
+          <li>این همون داده‌ایه که گوگل برای «تجربه‌ی صفحه» توی رتبه‌بندی بهش نگاه می‌کنه. 🎯</li>
+        </ul>
+
+        <h3>🧪 بخش دوم: تست آزمایشگاهی <span class="en">(Lab Data / Lighthouse)</span></h3>
+        <ul>
+          <li>با موتوری به اسم <b>Lighthouse</b> انجام می‌شه که الان نسخه‌ی ۱۳ـش پشت PSI کار می‌کنه.</li>
+          <li>برای موبایل، یه گوشی میان‌رده با اینترنت کُند (شبیه 4G ضعیف) شبیه‌سازی می‌شه. برای همین نمره‌ی موبایل تقریباً همیشه از دسکتاپ کمتره.</li>
+          <li>نمره‌ی معروف ۰ تا ۱۰۰ از همین بخش میاد.</li>
+          <li>هر بار تست بگیری ممکنه چند نمره بالا پایین بشه. این خطا نیست، شرایط شبکه و سرور فرق می‌کنه.</li>
+        </ul>
+        <div class="tip">💡 <b>قانون طلایی:</b> برای تصمیم‌گیری به داده‌ی واقعی نگاه کن، برای پیدا کردن و رفع مشکل از تست آزمایشگاهی استفاده کن.</div>
+
+        <h3>🗂️ این صفحه یا کل سایت؟</h3>
+        <p>توی بخش داده‌ی واقعی دو تا تب داری: <b>This URL</b> (فقط همین صفحه) و <b>Origin</b> (میانگین کل دامنه). اگه صفحه‌ت داده‌ی کافی نداشته باشه، PSI فقط داده‌ی کل دامنه رو نشون می‌ده.</p>
+      </div>
+      <button class="done-btn" data-done="l1" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۲ ===================== -->
+    <section class="lesson" id="l2" data-title="خوندن کارنامه و ۴ بخش نمره">
+      <div class="lesson-head"><div class="badge">📋</div><div><div class="meta">درس ۲ · ۱۰ دقیقه</div><h2>کارنامه رو چطور بخونیم؟ ۴ تا نمره، ۳ تا رنگ</h2></div></div>
+      <div class="prose">
+        <div class="tldr"><b>خلاصه:</b> چهار تا دسته داریم که هرکدوم از ۰ تا ۱۰۰ نمره می‌گیرن. سبز یعنی ۹۰ به بالا، نارنجی ۵۰ تا ۸۹، قرمز زیر ۵۰.</div>
+        <div class="grid">
+          <div class="mcard"><span class="ab">⚡ Performance</span><span class="fa">سرعت و روونی</span>صفحه چقدر زود نشون داده می‌شه، چقدر زود به کلیک جواب می‌ده و موقع لود شدن می‌پره یا نه.</div>
+          <div class="mcard"><span class="ab">♿ Accessibility</span><span class="fa">دسترسی‌پذیری</span>آدم‌هایی که کم‌بینا یا نابینان یا با کیبورد کار می‌کنن هم راحت از سایت استفاده می‌کنن؟</div>
+          <div class="mcard"><span class="ab">✅ Best Practices</span><span class="fa">اصول درست</span>امنیت، HTTPS، نبود خطای کنسول و استفاده نکردن از چیزهای قدیمی و منسوخ.</div>
+          <div class="mcard"><span class="ab">🔎 SEO</span><span class="fa">سئوی پایه</span>گوگل می‌تونه صفحه رو درست بخونه و ایندکس کنه؟ (فقط موارد پایه‌ای، نه کل سئو!)</div>
+        </div>
+        <div class="scale"><span class="s-p">۰ تا ۴۹ 🔴 ضعیف</span><span class="s-a">۵۰ تا ۸۹ 🟠 نیاز به بهبود</span><span class="s-g">۹۰ تا ۱۰۰ 🟢 خوب</span></div>
+
+        <h3>🧩 بخش‌های پایین گزارش Performance</h3>
+        <p>زیر نمره‌ی Performance چند بخش می‌بینی. از Lighthouse 13 به بعد ظاهرش کمی عوض شده:</p>
+        <ul>
+          <li><b>Metrics:</b> پنج عدد اصلی که نمره از اونا ساخته می‌شه (درس ۳ و ۴).</li>
+          <li><b>Insights:</b> پیشنهادهای تجمیع‌شده که قبلاً اسمشون Opportunities بود؛ مثلاً «Improve image delivery» که چند تا توصیه‌ی قدیمی درباره‌ی عکس رو یکجا آورده (درس ۹).</li>
+          <li><b>Diagnostics:</b> اطلاعات تکمیلی که مستقیم نمره نمی‌دن ولی سرنخ خوبی‌ان.</li>
+          <li><b>Passed audits:</b> چیزهایی که قبول شدی. 🎉</li>
+        </ul>
+        <div class="note">📌 خود پیشنهادها (Insights و Diagnostics) <b>مستقیماً نمره رو بالا پایین نمی‌کنن</b>. نمره فقط از ۵ معیار اصلی ساخته می‌شه. پیشنهادها فقط می‌گن چی باعث شده اون معیارها بد بشن.</div>
+        <div class="tip">🔧 یه ترفند: بالای بخش Insights می‌تونی گزینه‌ی نمایش مرتبط با هر معیار رو بزنی (مثلاً فقط مشکل‌های مربوط به LCP). اینجوری می‌فهمی کدوم کار بیشترین اثر رو داره.</div>
+      </div>
+      <button class="done-btn" data-done="l2" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۳ ===================== -->
+    <section class="lesson" id="l3" data-title="سه معیار طلایی Core Web Vitals">
+      <div class="lesson-head"><div class="badge">❤️</div><div><div class="meta">درس ۳ · ۱۲ دقیقه</div><h2>Core Web Vitals: سه تا معیار طلایی گوگل</h2></div></div>
+      <div class="prose">
+        <div class="tldr"><b>خلاصه:</b> گوگل تجربه‌ی کاربر رو با سه سؤال می‌سنجه: محتوای اصلی زود اومد؟ (LCP) · به کلیک سریع جواب داد؟ (INP) · صفحه نپرید؟ (CLS)</div>
+        <div class="grid">
+          <div class="mcard"><span class="ab">🖼️ LCP</span><span class="fa">بزرگ‌ترین محتوای نمایش‌داده‌شده</span>بزرگ‌ترین عکس یا متنی که بدون اسکرول دیده می‌شه، کِی کامل نشون داده شد؟
+            <div class="scale"><span class="s-g">تا ۲٫۵ ثانیه</span><span class="s-a">۲٫۵ تا ۴</span><span class="s-p">بیش از ۴</span></div></div>
+          <div class="mcard"><span class="ab">👆 INP</span><span class="fa">سرعت پاسخ به تعامل</span>وقتی کاربر کلیک می‌کنه یا تایپ می‌کنه، چقدر طول می‌کشه تا صفحه واکنش نشون بده؟
+            <div class="scale"><span class="s-g">تا ۲۰۰ میلی‌ثانیه</span><span class="s-a">۲۰۰ تا ۵۰۰</span><span class="s-p">بیش از ۵۰۰</span></div></div>
+          <div class="mcard"><span class="ab">📐 CLS</span><span class="fa">جابه‌جایی ناگهانی چیدمان</span>چقدر المان‌ها موقع لود شدن بی‌خبر جابه‌جا می‌شن؟ (عدده، واحد نداره)
+            <div class="scale"><span class="s-g">تا ۰٫۱</span><span class="s-a">۰٫۱ تا ۰٫۲۵</span><span class="s-p">بیش از ۰٫۲۵</span></div></div>
+        </div>
+
+        <h3>🖼️ LCP دقیقاً چی رو می‌سنجه؟</h3>
+        <p>همون چیزی که یادت بود! مرورگر نگاه می‌کنه بدون اسکرول، <b>بزرگ‌ترین</b> المان صفحه چیه. می‌تونه یه عکس بنر، عکس پس‌زمینه، پوستر ویدیو یا یه بلوک متن بزرگ مثل سرتیتر باشه. بعد زمان نمایش کاملش رو ثبت می‌کنه.</p>
+        <div class="warn">⚠️ LCP کاری نداره اون المان «مهمه» یا «تبلیغه». فقط اندازه برایش مهمه. اگه یه بنر سنگین بالای صفحه گذاشتی، اون می‌شه LCP. محتوای داخل iframe (مثل خیلی از تبلیغ‌های بیرونی) حساب نمی‌شه.</div>
+        <p>توی گزارش PSI، بخش <b>LCP breakdown</b> بهت نشون می‌ده دقیقاً کدوم المان LCP بوده و زمانش صرف چی شده. درس ۵ کامل بازش می‌کنیم.</p>
+
+        <h3>👆 INP چیه و چرا جای FID اومد؟</h3>
+        <p>تا مارس ۲۰۲۴ معیار سوم FID بود که فقط <b>اولین</b> کلیک رو می‌سنجید. INP جاش اومد و سخت‌گیرتره: <b>تقریباً همه‌ی تعامل‌ها</b> در طول بازدید رو نگاه می‌کنه و یکی از کندترین‌ها رو گزارش می‌ده.</p>
+        <div class="analogy">🛎️ مثل زنگ پذیرش هتل: FID فقط می‌پرسید «بار اول که زنگ زدی، کی جواب داد؟». INP می‌پرسه «توی کل اقامتت، بدترین تأخیری که داشتی چقدر بود؟».</div>
+        <div class="note">📌 INP فقط توی داده‌ی واقعی وجود داره، چون تست آزمایشگاهی کسی رو نداره که کلیک کنه. توی تست آزمایشگاهی، <b>TBT</b> نماینده‌ی اونه (درس ۴).</div>
+
+        <h3>📐 CLS یعنی همون «پریدن» اعصاب‌خردکن</h3>
+        <p>داری می‌خونی و یهو یه بنر از بالا میاد و متن می‌ره پایین. یا می‌خوای دکمه‌ی «انصراف» رو بزنی و یهو جاش «پرداخت» میاد! 😱 این جابه‌جایی‌ها جمع زده می‌شن و می‌شن CLS. جابه‌جایی‌هایی که درست بعد از کلیک خود کاربر اتفاق بیفتن (مثل باز کردن یه منو) حساب نمی‌شن.</p>
+
+        <h3>✅ «قبول شدن» توی Core Web Vitals</h3>
+        <p>بالای گزارش جمله‌ای مثل <b>Core Web Vitals Assessment: Passed</b> یا <b>Failed</b> می‌بینی. برای قبولی باید هر سه معیار توی داده‌ی واقعی (صدک ۷۵) سبز باشن. اگه برای INP داده نباشه، فقط LCP و CLS ملاکن.</p>
+      </div>
+      <button class="done-btn" data-done="l3" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۴ ===================== -->
+    <section class="lesson" id="l4" data-title="۵ معیار نمره + ماشین‌حساب">
+      <div class="lesson-head"><div class="badge">🧮</div><div><div class="meta">درس ۴ · ۱۵ دقیقه</div><h2>نمره‌ی Performance چطور حساب می‌شه؟ (با ماشین‌حساب)</h2></div></div>
+      <div class="prose">
+        <div class="tldr"><b>خلاصه:</b> نمره از ۵ معیار آزمایشگاهی ساخته می‌شه. سه تاش (TBT، LCP، CLS) روی هم ۸۰ درصد نمره‌ان، پس اول سراغ اونا برو.</div>
+        <div class="tbl"><table>
+          <thead><tr><th>معیار</th><th>یعنی چی؟</th><th>وزن در نمره</th><th>سبز در موبایل</th></tr></thead>
+          <tbody>
+            <tr><td><b>TBT</b></td><td>کل زمانی که صفحه بین FCP و آماده شدن، به‌خاطر کارهای سنگین جاوااسکریپت «قفل» بوده</td><td><b>۳۰٪</b></td><td>تا ۲۰۰ میلی‌ثانیه</td></tr>
+            <tr><td><b>LCP</b></td><td>نمایش بزرگ‌ترین محتوای بالای صفحه</td><td><b>۲۵٪</b></td><td>تا ۲٫۵ ثانیه</td></tr>
+            <tr><td><b>CLS</b></td><td>جابه‌جایی ناگهانی المان‌ها</td><td><b>۲۵٪</b></td><td>تا ۰٫۱</td></tr>
+            <tr><td><b>FCP</b></td><td>اولین چیزی (متن، عکس، لوگو) که روی صفحه نقش می‌بنده</td><td>۱۰٪</td><td>تا ۱٫۸ ثانیه</td></tr>
+            <tr><td><b>Speed Index</b></td><td>بالای صفحه با چه سرعتی «پر» می‌شه</td><td>۱۰٪</td><td>تا ۳٫۴ ثانیه</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>⏳ TBT به زبون ساده</h3>
+        <p>مرورگر یه «نخ اصلی» داره که هم جاوااسکریپت رو اجرا می‌کنه، هم به کلیک‌ها جواب می‌ده. هر کاری که بیشتر از <b>۵۰ میلی‌ثانیه</b> طول بکشه یه «کار طولانی» یا Long Task حساب می‌شه. مقدار اضافه‌ش (مثلاً کار ۱۲۰ میلی‌ثانیه‌ای یعنی ۷۰ میلی‌ثانیه) زمان «قفل بودن» صفحه است. جمع این‌ها می‌شه TBT.</p>
+        <div class="analogy">🚪 مثل یه صندوق‌دار تنها: اگه یه مشتری ۱۰ دقیقه وقتش رو بگیره، بقیه‌ی صف هر کاری کنن جواب نمی‌گیرن. TBT می‌گه صندوق‌دار چقدر مشغولِ «مشتری‌های پرحرف» بوده.</div>
+
+        <h3>🖌️ FCP و Speed Index</h3>
+        <p>FCP اولین علامت زندگیه: «صفحه داره میاد!». Speed Index نشون می‌ده بالای صفحه به‌طور کلی چقدر سریع شکل می‌گیره. هر دو با سرور سریع‌تر، CSS سبک‌تر و حذف فایل‌های مسدودکننده بهتر می‌شن.</p>
+
+        <h3>🌐 TTFB: معیاری که نمره نداره ولی پای همه چیزه</h3>
+        <p>TTFB زمان رسیدن اولین بایت جواب از سرور به مرورگره. توی داده‌ی واقعی PSI نشونش می‌ده (خوب: ۰٫۸ ثانیه یا کمتر، ضعیف: بیش از ۱٫۸ ثانیه). TTFB بد، همه‌ی معیارهای دیگه رو هم عقب می‌اندازه، چون تا HTML نرسه هیچ اتفاقی نمی‌افته.</p>
+
+        <h3>🎮 ماشین‌حساب: خودت امتحان کن!</h3>
+        <p>اسلایدرها رو جابه‌جا کن و ببین هر معیار چقدر روی نمره اثر داره. این ماشین‌حساب از همون فرمول و منحنی‌های امتیازدهی Lighthouse استفاده می‌کنه، پس جوابش خیلی نزدیک به عدد واقعیه.</p>
+        <div class="calc" id="calc">
+          <div>
+            <div class="seg" style="margin-bottom:1rem" id="devSeg">
+              <button data-dev="mobile" aria-pressed="true">📱 موبایل</button>
+              <button data-dev="desktop">💻 دسکتاپ</button>
+            </div>
+            <div class="row"><label for="cFCP"><span>FCP (ثانیه)</span><output id="oFCP"></output></label><input type="range" id="cFCP" min="0.3" max="8" step="0.1" value="2.2"></div>
+            <div class="row"><label for="cSI"><span>Speed Index (ثانیه)</span><output id="oSI"></output></label><input type="range" id="cSI" min="0.5" max="12" step="0.1" value="4"></div>
+            <div class="row"><label for="cLCP"><span>LCP (ثانیه)</span><output id="oLCP"></output></label><input type="range" id="cLCP" min="0.5" max="10" step="0.1" value="3.5"></div>
+            <div class="row"><label for="cTBT"><span>TBT (میلی‌ثانیه)</span><output id="oTBT"></output></label><input type="range" id="cTBT" min="0" max="2000" step="10" value="400"></div>
+            <div class="row"><label for="cCLS"><span>CLS</span><output id="oCLS"></output></label><input type="range" id="cCLS" min="0" max="0.6" step="0.01" value="0.12"></div>
+          </div>
+          <div class="side">
+            <div class="gauge"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--soft)" stroke-width="11"/><circle id="calcRing" cx="60" cy="60" r="52" fill="none" stroke="var(--good)" stroke-width="11" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="0" style="transition:stroke-dashoffset .4s,stroke .4s"/></svg>
+              <div class="val"><div><span id="calcNum">۰</span><small>نمره‌ی Performance</small></div></div></div>
+            <div class="contrib" id="contrib" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="tip">🎯 یه آزمایش کن: TBT رو از ۸۰۰ به ۱۵۰ برسون و ببین نمره چقدر می‌پره. حالا FCP رو همون‌قدر بهتر کن. فرق رو می‌بینی؟ برای همینه که می‌گیم اول TBT، LCP و CLS.</div>
+      </div>
+      <button class="done-btn" data-done="l4" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۵ ===================== -->
+    <section class="lesson" id="l5" data-title="بهینه‌سازی LCP">
+      <div class="lesson-head"><div class="badge">🖼️</div><div><div class="meta">درس ۵ · ۱۸ دقیقه</div><h2>بهینه‌سازی LCP: محتوای اصلی رو زودتر نشون بده</h2></div></div>
+      <div class="prose">
+        <div class="tldr"><b>خلاصه:</b> زمان LCP چهار تیکه داره. باید بفهمی کدوم تیکه چاقه و همون رو لاغر کنی.</div>
+        <h3>🧩 چهار تیکه‌ی LCP <span class="en">(LCP breakdown)</span></h3>
+        <ol class="steps">
+          <li><b>TTFB:</b> از وقتی کاربر آدرس رو زد تا وقتی اولین بایت HTML رسید. (سرور، کش، CDN)</li>
+          <li><b>تأخیر شروع دانلود <span class="en">(Resource load delay)</span>:</b> فاصله‌ی بین رسیدن HTML تا وقتی که مرورگر <i>شروع</i> به دانلود عکس LCP می‌کنه. اگه عکس دیر «کشف» بشه، این زیاد می‌شه.</li>
+          <li><b>مدت دانلود <span class="en">(Resource load duration)</span>:</b> خود دانلود عکس چقدر طول کشید. (حجم عکس)</li>
+          <li><b>تأخیر نمایش <span class="en">(Element render delay)</span>:</b> عکس رسیده ولی هنوز نشون داده نشده، چون CSS یا JS جلوش رو گرفته.</li>
+        </ol>
+        <div class="tip">💡 توی یه سایت سالم، بیشترِ زمان باید صرف TTFB و دانلود بشه و دو تا «تأخیر» نزدیک صفر باشن.</div>
+
+        <h3>🔧 جعبه‌ابزار LCP</h3>
+        <details class="acc" open><summary>۱. عکس LCP رو هیچ‌وقت lazy نکن 🚫</summary><div class="body">
+          <p>اشتباه خیلی رایجیه. وردپرس و خیلی از قالب‌ها همه‌ی عکس‌ها رو lazy می‌کنن، حتی بنر بالای صفحه رو. نتیجه؟ مرورگر صبر می‌کنه تا مطمئن بشه عکس توی دیدرسه، بعد دانلودش می‌کنه.</p>
+<pre><code><span class="c-com">&lt;!-- ❌ بد: عکس بالای صفحه با lazy --&gt;</span>
+<span class="c-tag">&lt;img</span> <span class="c-att">src</span>=<span class="c-str">"hero.jpg"</span> <span class="c-att">loading</span>=<span class="c-str">"lazy"</span><span class="c-tag">&gt;</span>
+
+<span class="c-com">&lt;!-- ✅ خوب: اولویت بالا + ابعاد مشخص --&gt;</span>
+<span class="c-tag">&lt;img</span> <span class="c-att">src</span>=<span class="c-str">"hero.avif"</span> <span class="c-att">width</span>=<span class="c-str">"1200"</span> <span class="c-att">height</span>=<span class="c-str">"600"</span>
+     <span class="c-att">fetchpriority</span>=<span class="c-str">"high"</span> <span class="c-att">alt</span>=<span class="c-str">"…"</span><span class="c-tag">&gt;</span></code></pre>
+          <p>عکس‌های <b>پایین</b> صفحه رو حتماً lazy کن. فقط بالای صفحه نه.</p>
+        </div></details>
+
+        <details class="acc"><summary>۲. بذار مرورگر عکس رو زود «کشف» کنه 🔭</summary><div class="body">
+          <p>اگه عکس LCP با CSS (مثل <code>background-image</code>) یا با جاوااسکریپت اضافه بشه، مرورگر توی HTML نمی‌بینتش و دیر می‌ره سراغش. Insight مربوطه اسمش <b>LCP request discovery</b> است. راه‌حل: عکس رو با تگ <code>&lt;img&gt;</code> توی خود HTML بذار، یا preload کن:</p>
+<pre><code><span class="c-tag">&lt;link</span> <span class="c-att">rel</span>=<span class="c-str">"preload"</span> <span class="c-att">as</span>=<span class="c-str">"image"</span> <span class="c-att">href</span>=<span class="c-str">"hero.avif"</span> <span class="c-att">fetchpriority</span>=<span class="c-str">"high"</span><span class="c-tag">&gt;</span></code></pre>
+        </div></details>
+
+        <details class="acc"><summary>۳. عکس رو سبک و به‌اندازه کن 🗜️</summary><div class="body">
+          <ul>
+            <li>فرمت مدرن: <b>AVIF</b> یا <b>WebP</b> معمولاً خیلی سبک‌تر از JPG و PNG هستن.</li>
+            <li>عکس ۴۰۰۰ پیکسلی رو توی کادر ۴۰۰ پیکسلی نذار. با <code>srcset</code> برای هر صفحه‌نمایش اندازه‌ی مناسب بفرست.</li>
+            <li>برای انیمیشن به‌جای GIF از ویدیوی MP4 یا WebM استفاده کن.</li>
+          </ul>
+<pre><code><span class="c-tag">&lt;img</span> <span class="c-att">src</span>=<span class="c-str">"hero-800.avif"</span>
+     <span class="c-att">srcset</span>=<span class="c-str">"hero-480.avif 480w, hero-800.avif 800w, hero-1600.avif 1600w"</span>
+     <span class="c-att">sizes</span>=<span class="c-str">"(max-width: 700px) 100vw, 800px"</span>
+     <span class="c-att">width</span>=<span class="c-str">"800"</span> <span class="c-att">height</span>=<span class="c-str">"400"</span> <span class="c-att">alt</span>=<span class="c-str">"…"</span><span class="c-tag">&gt;</span></code></pre>
+          <p>توی PSI همه‌ی این‌ها زیر یه Insight به اسم <b>Improve image delivery</b> جمع شدن.</p>
+        </div></details>
+
+        <details class="acc"><summary>۴. سرور رو سریع کن (TTFB) 🖥️</summary><div class="body">
+          <ul>
+            <li><b>کش صفحه:</b> HTML رو از قبل آماده نگه دار تا برای هر بازدید از نو ساخته نشه (توی وردپرس با افزونه‌های کش).</li>
+            <li><b>CDN:</b> فایل‌ها رو از نزدیک‌ترین سرور به کاربر بفرست. اگه مخاطبت ایرانیه، هاست و CDN نزدیک به ایران فرق بزرگی ایجاد می‌کنه.</li>
+            <li><b>ریدایرکت‌های زنجیره‌ای</b> رو حذف کن (مثلاً <code>http → https → www</code>). هر ریدایرکت یه رفت‌وبرگشت اضافه است.</li>
+            <li><b>فشرده‌سازی</b> Gzip یا Brotli رو روی سرور روشن کن.</li>
+          </ul>
+          <p>این سه مورد آخر توی PSI زیر Insight <b>Document request latency</b> نشون داده می‌شن.</p>
+        </div></details>
+
+        <details class="acc"><summary>۵. جلوی «تأخیر نمایش» رو بگیر 🧱</summary><div class="body">
+          <p>اگه عکس رسیده ولی نشون داده نمی‌شه، معمولاً یه CSS یا JS سنگین جلوش رو گرفته (درس ۸). یا اسلایدری داری که با جاوااسکریپت عکس اول رو نشون می‌ده. اسلایدرهای سنگین بالای صفحه از دشمن‌های اصلی LCP هستن. 🎠</p>
+        </div></details>
+      </div>
+      <button class="done-btn" data-done="l5" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۶ ===================== -->
+    <section class="lesson" id="l6" data-title="بهینه‌سازی INP و TBT">
+      <div class="lesson-head"><div class="badge">👆</div><div><div class="meta">درس ۶ · ۱۸ دقیقه</div><h2>بهینه‌سازی INP و TBT: صفحه‌ای که فوری جواب می‌ده</h2></div></div>
+      <div class="prose">
+        <div class="tldr"><b>خلاصه:</b> دشمن اصلی، جاوااسکریپتِ زیاد و کارهای طولانیه. کمترش کن، تیکه‌تیکه‌ش کن، دیرتر اجراش کن.</div>
+        <h3>⏱️ سه مرحله‌ی یه تعامل</h3>
+        <p>وقتی کاربر کلیک می‌کنه، زمان INP سه بخش داره که توی Insight <b>INP breakdown</b> می‌بینیش:</p>
+        <ol class="steps">
+          <li><b>تأخیر ورودی:</b> نخ اصلی سرش شلوغه و کلیک باید توی صف وایسه.</li>
+          <li><b>زمان پردازش:</b> کدی که به کلیک جواب می‌ده چقدر طول کشید.</li>
+          <li><b>تأخیر نمایش:</b> مرورگر چقدر طول کشید تا نتیجه رو روی صفحه بکشه.</li>
+        </ol>
+        <h3>🔧 جعبه‌ابزار INP/TBT</h3>
+        <details class="acc" open><summary>۱. جاوااسکریپت کمتر بفرست 📦</summary><div class="body">
+          <ul>
+            <li>کدی که استفاده نمی‌شه رو حذف کن (Diagnostic: <b>Reduce unused JavaScript</b>).</li>
+            <li><b>تقسیم کد</b> (Code splitting): فقط کدی رو بفرست که این صفحه لازم داره.</li>
+            <li>کتابخونه‌ی سنگین برای کار ساده نیار. گاهی ۲۰ خط کد خالص جای یه کتابخونه‌ی ۹۰ کیلوبایتی رو می‌گیره.</li>
+            <li>Insightهای <b>Legacy JavaScript</b> و <b>Duplicated JavaScript</b> می‌گن کجا کد قدیمی یا تکراری داری.</li>
+          </ul>
+        </div></details>
+        <details class="acc"><summary>۲. اسکریپت‌ها رو دیرتر اجرا کن 🐢➡️🐇</summary><div class="body">
+<pre><code><span class="c-com">&lt;!-- defer: بعد از ساخته شدن صفحه، به‌ترتیب اجرا می‌شه --&gt;</span>
+<span class="c-tag">&lt;script</span> <span class="c-att">src</span>=<span class="c-str">"app.js"</span> <span class="c-att">defer</span><span class="c-tag">&gt;&lt;/script&gt;</span>
+
+<span class="c-com">&lt;!-- async: هر وقت رسید اجرا می‌شه؛ برای آنالیتیکس مناسبه --&gt;</span>
+<span class="c-tag">&lt;script</span> <span class="c-att">src</span>=<span class="c-str">"analytics.js"</span> <span class="c-att">async</span><span class="c-tag">&gt;&lt;/script&gt;</span></code></pre>
+          <p>اسکریپت‌هایی مثل چت آنلاین یا ویجت‌ها رو می‌شه بعد از اولین تعامل کاربر یا چند ثانیه بعد از لود بارگذاری کرد.</p>
+        </div></details>
+        <details class="acc"><summary>۳. کارهای طولانی رو تیکه‌تیکه کن ✂️</summary><div class="body">
+          <p>به‌جای یه حلقه‌ی ۵۰۰ میلی‌ثانیه‌ای، کار رو تیکه کن و بین تیکه‌ها به مرورگر فرصت نفس کشیدن بده:</p>
+<pre><code><span class="c-com">// بین هر تیکه، نخ اصلی رو آزاد کن تا کلیک‌ها جواب بگیرن</span>
+async function processAll(items) {
+  for (const item of items) {
+    doWork(item);
+    await (globalThis.scheduler?.yield?.() ?? new Promise(r =&gt; setTimeout(r, 0)));
+  }
+}</code></pre>
+          <p>کارهای خیلی سنگین (مثل پردازش داده) رو هم می‌شه کامل برد توی <b>Web Worker</b> تا اصلاً به نخ اصلی کاری نداشته باشن.</p>
+        </div></details>
+        <details class="acc"><summary>۴. اسکریپت‌های شخص ثالث رو مهار کن 🧳</summary><div class="body">
+          <p>آنالیتیکس، پیکسل‌های تبلیغاتی، چت آنلاین، ویجت شبکه‌های اجتماعی، نقشه و ویدیوی امبد شده... هرکدوم سهمی از نخ اصلی رو می‌خورن. Insight <b>3rd parties</b> نشون می‌ده هر سرویس بیرونی چقدر وقت گرفته.</p>
+          <ul>
+            <li>اونایی که لازم نیستن رو حذف کن. 🧹</li>
+            <li>برای ویدیوی یوتیوب و نقشه، اول یه عکس ساده نشون بده و با کلیک کاربر اصلش رو لود کن (روش Facade).</li>
+          </ul>
+        </div></details>
+        <details class="acc"><summary>۵. DOM رو کوچیک نگه دار و از Forced reflow فرار کن 🌳</summary><div class="body">
+          <p>صفحه‌ای که هزاران المان تودرتو داره، هر تغییر کوچیکش گرون تموم می‌شه (Insight: <b>Optimize DOM size</b>). یه خطای رایج دیگه اینه که توی جاوااسکریپت پشت سر هم یه اندازه رو بخونی (مثل <code>offsetHeight</code>) و استایل رو عوض کنی. این کار مرورگر رو مجبور به محاسبه‌ی دوباره‌ی چیدمان می‌کنه (Insight: <b>Forced reflow</b>). اول همه‌ی خوندن‌ها، بعد همه‌ی نوشتن‌ها.</p>
+          <p>برای بخش‌های پایین صفحه هم <code>content-visibility: auto</code> می‌تونه رندر رو تا وقتی که بهشون برسی عقب بندازه.</p>
+        </div></details>
+        <div class="tip">⚡ برای دیدن INP واقعی سایت خودت، از افزونه‌ی Web Vitals یا تب Performance توی Chrome DevTools استفاده کن. اونجا INP زنده‌ی کلیک‌های خودت رو نشون می‌ده.</div>
+      </div>
+      <button class="done-btn" data-done="l6" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۷ ===================== -->
+    <section class="lesson" id="l7" data-title="بهینه‌سازی CLS">
+      <div class="lesson-head"><div class="badge">📐</div><div><div class="meta">درس ۷ · ۱۲ دقیقه</div><h2>بهینه‌سازی CLS: صفحه‌ای که سر جاش وایمیسه</h2></div></div>
+      <div class="prose">
+        <div class="tldr"><b>خلاصه:</b> برای هر چیزی که دیر لود می‌شه، از قبل جا نگه دار. همین!</div>
+        <p>توی PSI، Insight <b>Layout shift culprits</b> بهت نشون می‌ده دقیقاً کدوم المان‌ها پریدن و چرا. معمولاً یکی از این ۵ مقصرن: 🕵️</p>
+        <details class="acc" open><summary>۱. عکس و ویدیوی بدون ابعاد 🖼️</summary><div class="body">
+          <p>وقتی <code>width</code> و <code>height</code> نداری، مرورگر نمی‌دونه چقدر جا بذاره. عکس که رسید، همه چیز رو هل می‌ده پایین.</p>
+<pre><code><span class="c-tag">&lt;img</span> <span class="c-att">src</span>=<span class="c-str">"photo.webp"</span> <span class="c-att">width</span>=<span class="c-str">"640"</span> <span class="c-att">height</span>=<span class="c-str">"360"</span> <span class="c-att">alt</span>=<span class="c-str">"…"</span><span class="c-tag">&gt;</span>
+
+<span class="c-com">/* یا با CSS */</span>
+.video-box { aspect-ratio: 16 / 9; width: 100%; }</code></pre>
+        </div></details>
+        <details class="acc"><summary>۲. تبلیغ، بنر و ویجتی که بی‌خبر میاد 📢</summary><div class="body">
+          <p>برای جایگاه تبلیغ یا بنر یه <code>min-height</code> ثابت بذار، حتی اگه گاهی خالی بمونه. بنرهای «دانلود اپ» و «کوکی» رو هم به‌جای هل دادن محتوا، روی صفحه شناور کن (<code>position: fixed</code>).</p>
+        </div></details>
+        <details class="acc"><summary>۳. فونت‌هایی که دیر میان 🔤</summary><div class="body">
+          <p>وقتی فونت اصلی (مثلاً وزیرمتن) دیر برسه و جای فونت موقت بشینه، اندازه‌ی متن عوض می‌شه و خط‌ها جابه‌جا می‌شن.</p>
+<pre><code>@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn.woff2") format("woff2");
+  font-display: swap;   <span class="c-com">/* متن فوراً با فونت موقت نشون داده بشه */</span>
+}
+<span class="c-tag">&lt;link</span> <span class="c-att">rel</span>=<span class="c-str">"preload"</span> <span class="c-att">href</span>=<span class="c-str">"/fonts/Vazirmatn.woff2"</span> <span class="c-att">as</span>=<span class="c-str">"font"</span> <span class="c-att">type</span>=<span class="c-str">"font/woff2"</span> <span class="c-att">crossorigin</span><span class="c-tag">&gt;</span></code></pre>
+          <p>Insight <b>Font display</b> چک می‌کنه که فونت‌ها متن رو نامرئی نگه ندارن. برای کم کردن پرش، می‌تونی با <code>size-adjust</code> فونت موقت رو هم‌اندازه‌ی فونت اصلی کنی. استفاده از فرمت <b>woff2</b> و فقط وزن‌هایی که واقعاً لازم داری هم حجم رو خیلی کم می‌کنه.</p>
+        </div></details>
+        <details class="acc"><summary>۴. محتوایی که با JS بالای صفحه اضافه می‌شه ⬆️</summary><div class="body">
+          <p>هیچ‌وقت چیزی رو <b>بالای</b> محتوای موجود اضافه نکن، مگر اینکه خود کاربر کاری کرده باشه. اگه لازمه، از قبل جاش رو خالی نگه دار یا از اسکلت (Skeleton) هم‌اندازه استفاده کن.</p>
+        </div></details>
+        <details class="acc"><summary>۵. انیمیشن با ویژگی‌های اشتباه 🎞️</summary><div class="body">
+          <p>انیمیشن با <code>top</code>، <code>margin</code> یا <code>height</code> چیدمان رو جابه‌جا می‌کنه. به‌جاش از <code>transform</code> و <code>opacity</code> استفاده کن که هم نرم‌ترن، هم CLS نمی‌سازن.</p>
+        </div></details>
+        <div class="note">🧠 <b>نکته‌ی جالب:</b> اگه سایتت از «کش برگشت/جلو» مرورگر (bfcache) پشتیبانی کنه، وقتی کاربر دکمه‌ی Back رو می‌زنه، صفحه آنی برمی‌گرده و LCP و CLS عالی ثبت می‌شه. چیزهایی مثل <code>unload</code> یا هدر <code>Cache-Control: no-store</code> جلوی این کش رو می‌گیرن.</div>
+      </div>
+      <button class="done-btn" data-done="l7" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۸ ===================== -->
+    <section class="lesson" id="l8" data-title="CSS، فونت و منابع مسدودکننده">
+      <div class="lesson-head"><div class="badge">🧱</div><div><div class="meta">درس ۸ · ۱۴ دقیقه</div><h2>منابع مسدودکننده، CSS، کش و شبکه</h2></div></div>
+      <div class="prose">
+        <div class="tldr"><b>خلاصه:</b> مرورگر تا CSS و JSهای داخل head رو نگیره، چیزی نشون نمی‌ده. مسیر رو کوتاه کن، فایل‌ها رو سبک کن و کش رو طولانی کن.</div>
+        <h3>🚧 Render blocking requests</h3>
+        <p>فایل‌های CSS و اسکریپت‌های بدون <code>defer</code> توی <code>&lt;head&gt;</code> جلوی نمایش رو می‌گیرن. راه‌حل‌ها:</p>
+        <ul>
+          <li>CSS ضروری بالای صفحه (Critical CSS) رو مستقیم داخل <code>&lt;style&gt;</code> بذار و بقیه رو بعداً لود کن.</li>
+          <li>CSSهایی که استفاده نمی‌شن رو حذف کن (Diagnostic: <b>Reduce unused CSS</b>). قالب‌ها و صفحه‌سازهای آماده معمولاً پر از این‌ان.</li>
+          <li>فایل‌ها رو فشرده (Minify) کن.</li>
+          <li>اسکریپت‌ها رو <code>defer</code> یا <code>async</code> کن (درس ۶).</li>
+        </ul>
+        <h3>🕸️ Network dependency tree</h3>
+        <p>اگه HTML یه CSS بخواد، اون CSS یه فونت بخواد و اون فونت از یه دامنه‌ی دیگه بیاد، یه زنجیره‌ی طولانی ساختی که هر حلقه‌ش یه رفت‌وبرگشت شبکه است. این Insight همین زنجیره رو نشون می‌ده. زنجیره رو کوتاه کن، و برای دامنه‌های بیرونی مهم از <code>preconnect</code> استفاده کن:</p>
+<pre><code><span class="c-tag">&lt;link</span> <span class="c-att">rel</span>=<span class="c-str">"preconnect"</span> <span class="c-att">href</span>=<span class="c-str">"https://cdn.example.com"</span> <span class="c-att">crossorigin</span><span class="c-tag">&gt;</span></code></pre>
+        <div class="warn">⚠️ با preconnect و preload زیاده‌روی نکن. اگه همه چیز «فوری» باشه، دیگه هیچ چیز فوری نیست. ۲ یا ۳ مورد واقعاً مهم کافیه.</div>
+        <h3>🗄️ Use efficient cache lifetimes</h3>
+        <p>فایل‌های ثابت (عکس، فونت، CSS، JS) رو با کش طولانی بفرست تا بازدید دوم تقریباً آنی باشه:</p>
+<pre><code>Cache-Control: public, max-age=31536000, immutable</code></pre>
+        <p>برای اینکه بعد از تغییر فایل، کاربر نسخه‌ی قدیمی رو نبینه، اسم فایل رو نسخه‌دار کن (مثلاً <code>style.v3.css</code>).</p>
+        <h3>🚀 Modern HTTP</h3>
+        <p>مطمئن شو سرورت از <b>HTTP/2</b> یا <b>HTTP/3</b> پشتیبانی می‌کنه. اکثر هاست‌ها و CDNهای امروزی این رو دارن؛ اگه نداری، وقت عوض کردنه.</p>
+        <h3>📱 Optimize viewport for mobile</h3>
+        <p>این خط باید توی همه‌ی صفحه‌ها باشه، وگرنه موبایل صفحه رو مثل دسکتاپ کوچیک‌شده نشون می‌ده و تعامل‌ها هم کندتر می‌شن:</p>
+<pre><code><span class="c-tag">&lt;meta</span> <span class="c-att">name</span>=<span class="c-str">"viewport"</span> <span class="c-att">content</span>=<span class="c-str">"width=device-width, initial-scale=1"</span><span class="c-tag">&gt;</span></code></pre>
+        <h3>🏋️ Avoid enormous network payloads</h3>
+        <p>مجموع حجم صفحه رو زیر نظر داشته باش. صفحه‌ای که چند مگابایته، روی اینترنت موبایل همیشه کند می‌مونه، هر کاری هم بکنی.</p>
+      </div>
+      <button class="done-btn" data-done="l8" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۹ ===================== -->
+    <section class="lesson" id="l9" data-title="فرهنگ لغت Insights">
+      <div class="lesson-head"><div class="badge">📖</div><div><div class="meta">درس ۹ · مرجع</div><h2>فرهنگ لغت: همه‌ی Insights و Diagnostics گزارش</h2></div></div>
+      <div class="prose">
+        <div class="tldr"><b>چطور ازش استفاده کنی؟</b> گزارش سایتت رو باز کن، هر مورد قرمز یا نارنجی رو اینجا پیدا کن و ببین یعنی چی و چه کاری لازمه.</div>
+        <div class="tbl"><table>
+          <thead><tr><th>اسم توی گزارش</th><th>یعنی چی؟</th><th>روی کدوم معیار اثر داره؟</th><th>درس</th></tr></thead>
+          <tbody>
+            <tr><td><bdi>LCP breakdown</bdi></td><td>زمان LCP رو به ۴ تیکه تقسیم می‌کنه و المان LCP رو نشون می‌ده</td><td>LCP</td><td>۵</td></tr>
+            <tr><td><bdi>LCP request discovery</bdi></td><td>عکس LCP زود پیدا شده؟ lazy نیست؟ fetchpriority داره؟</td><td>LCP</td><td>۵</td></tr>
+            <tr><td><bdi>Document request latency</bdi></td><td>ریدایرکت، کندی سرور و فشرده نبودن HTML</td><td>FCP، LCP</td><td>۵</td></tr>
+            <tr><td><bdi>Improve image delivery</bdi></td><td>عکس‌های بزرگ‌تر از لازم، فرمت قدیمی یا فشرده‌نشده</td><td>LCP، SI</td><td>۵</td></tr>
+            <tr><td><bdi>Render blocking requests</bdi></td><td>CSS و JSهایی که جلوی نمایش رو می‌گیرن</td><td>FCP، LCP</td><td>۸</td></tr>
+            <tr><td><bdi>Network dependency tree</bdi></td><td>زنجیره‌ی درخواست‌های وابسته و پیشنهاد preconnect</td><td>FCP، LCP</td><td>۸</td></tr>
+            <tr><td><bdi>Use efficient cache lifetimes</bdi></td><td>کش فایل‌های ثابت کوتاهه</td><td>بازدید تکراری</td><td>۸</td></tr>
+            <tr><td><bdi>Font display</bdi></td><td>فونت‌ها متن رو موقع لود نامرئی نگه می‌دارن</td><td>FCP، CLS</td><td>۷</td></tr>
+            <tr><td><bdi>Layout shift culprits</bdi></td><td>مقصرهای جابه‌جایی چیدمان</td><td>CLS</td><td>۷</td></tr>
+            <tr><td><bdi>INP breakdown</bdi></td><td>کندترین تعامل به سه مرحله تقسیم می‌شه (بیشتر توی DevTools)</td><td>INP</td><td>۶</td></tr>
+            <tr><td><bdi>Forced reflow</bdi></td><td>جاوااسکریپتی که مرورگر رو مجبور به محاسبه‌ی دوباره‌ی چیدمان می‌کنه</td><td>TBT، INP</td><td>۶</td></tr>
+            <tr><td><bdi>Optimize DOM size</bdi></td><td>تعداد المان‌های صفحه خیلی زیاده</td><td>TBT، INP</td><td>۶</td></tr>
+            <tr><td><bdi>Legacy JavaScript</bdi></td><td>کد قدیمی برای مرورگرهای قدیمی که امروز لازم نیست</td><td>TBT</td><td>۶</td></tr>
+            <tr><td><bdi>Duplicated JavaScript</bdi></td><td>یه کتابخونه دو بار لود شده</td><td>TBT</td><td>۶</td></tr>
+            <tr><td><bdi>3rd parties</bdi></td><td>سهم سرویس‌های بیرونی از زمان و حجم</td><td>همه</td><td>۶</td></tr>
+            <tr><td><bdi>Modern HTTP</bdi></td><td>سرور از HTTP/2 یا HTTP/3 استفاده نمی‌کنه</td><td>همه</td><td>۸</td></tr>
+            <tr><td><bdi>Optimize viewport for mobile</bdi></td><td>تگ viewport درست نیست</td><td>INP</td><td>۸</td></tr>
+            <tr><td><bdi>Reduce unused JavaScript / CSS</bdi></td><td>کدی که دانلود می‌شه ولی استفاده نمی‌شه</td><td>FCP، LCP، TBT</td><td>۶ و ۸</td></tr>
+            <tr><td><bdi>Minify CSS / JavaScript</bdi></td><td>فایل‌ها فشرده نشدن</td><td>FCP، LCP</td><td>۸</td></tr>
+            <tr><td><bdi>Avoid long main-thread tasks</bdi></td><td>فهرست کارهای بیش از ۵۰ میلی‌ثانیه</td><td>TBT</td><td>۶</td></tr>
+            <tr><td><bdi>Minimize main-thread work</bdi></td><td>نخ اصلی کلاً زیادی کار می‌کنه</td><td>TBT</td><td>۶</td></tr>
+            <tr><td><bdi>Reduce JavaScript execution time</bdi></td><td>اجرای JS طول می‌کشه</td><td>TBT</td><td>۶</td></tr>
+            <tr><td><bdi>Avoid enormous network payloads</bdi></td><td>حجم کل صفحه زیاده</td><td>همه</td><td>۸</td></tr>
+            <tr><td><bdi>Avoid non-composited animations</bdi></td><td>انیمیشن‌هایی که با transform و opacity ساخته نشدن</td><td>CLS</td><td>۷</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note">📌 اگه یه آموزش قدیمی اسم‌هایی مثل «Properly size images» یا «Serve images in next-gen formats» یا «Eliminate render-blocking resources» آورد، بدون که این‌ها توی Lighthouse 13 با Insightهای جدید بالا جایگزین شدن. مفهوم همونه، فقط اسم و دسته‌بندی عوض شده.</div>
+      </div>
+      <button class="done-btn" data-done="l9" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۱۰ ===================== -->
+    <section class="lesson" id="l10" data-title="دسترسی‌پذیری (Accessibility)">
+      <div class="lesson-head"><div class="badge">♿</div><div><div class="meta">درس ۱۰ · ۱۲ دقیقه</div><h2>دسترسی‌پذیری: سایتی برای همه</h2></div></div>
+      <div class="prose">
+        <div class="tldr"><b>خلاصه:</b> سایتت باید برای کسی که کم‌بیناست، از صفحه‌خوان استفاده می‌کنه یا فقط با کیبورد کار می‌کنه هم قابل‌استفاده باشه. این‌ها معمولاً ساده‌ترین نمره‌هان!</div>
+        <details class="acc" open><summary>🎨 کنتراست رنگ کافی</summary><div class="body"><p>متن خاکستری کم‌رنگ روی زمینه‌ی سفید قشنگه ولی خونده نمی‌شه. نسبت کنتراست متن معمولی باید دست‌کم <b>۴٫۵ به ۱</b> باشه و متن‌های درشت دست‌کم <b>۳ به ۱</b>. توی DevTools روی رنگ کلیک کنی، نسبت کنتراست رو نشون می‌ده.</p></div></details>
+        <details class="acc"><summary>🖼️ متن جایگزین برای عکس‌ها</summary><div class="body"><p>هر عکس معنادار یه <code>alt</code> توصیفی لازم داره. عکس‌های تزئینی <code>alt=""</code> (خالی) بگیرن تا صفحه‌خوان ازشون رد بشه.</p></div></details>
+        <details class="acc"><summary>🔘 دکمه‌ها و لینک‌های اسم‌دار</summary><div class="body"><p>دکمه‌ای که فقط یه آیکون داره (مثل 🔍 یا ☰) باید با <code>aria-label</code> اسم داشته باشه. وگرنه صفحه‌خوان فقط می‌گه «دکمه» و کاربر نمی‌فهمه چیه.</p>
+<pre><code><span class="c-tag">&lt;button</span> <span class="c-att">aria-label</span>=<span class="c-str">"جست‌وجو"</span><span class="c-tag">&gt;</span>🔍<span class="c-tag">&lt;/button&gt;</span></code></pre></div></details>
+        <details class="acc"><summary>📝 فرم‌ها با label</summary><div class="body"><p>هر فیلد فرم یه <code>&lt;label&gt;</code> وصل‌شده لازم داره. placeholder جای label رو نمی‌گیره، چون با شروع تایپ ناپدید می‌شه.</p></div></details>
+        <details class="acc"><summary>🌐 زبان و جهت صفحه</summary><div class="body"><p>برای سایت فارسی: <code>&lt;html lang="fa" dir="rtl"&gt;</code>. این‌جوری صفحه‌خوان با تلفظ فارسی می‌خونه.</p></div></details>
+        <details class="acc"><summary>🔢 ترتیب درست سرتیترها</summary><div class="body"><p>یک <code>h1</code> برای هر صفحه، و از <code>h2</code> یهو نپر به <code>h4</code>. سرتیترها نقشه‌ی صفحه برای صفحه‌خوان‌ها و موتورهای جست‌وجو هستن.</p></div></details>
+        <details class="acc"><summary>👆 اندازه‌ی کافی برای لمس</summary><div class="body"><p>دکمه‌ها و لینک‌ها روی موبایل باید به‌اندازه‌ی کافی بزرگ و از هم فاصله داشته باشن تا انگشت اشتباهی رو نزنه.</p></div></details>
+        <details class="acc"><summary>🧩 استفاده‌ی درست از ARIA</summary><div class="body"><p>قانون اول ARIA: تا جایی که می‌شه ازش استفاده نکن! اول از تگ‌های درست HTML (مثل <code>button</code>، <code>nav</code>، <code>main</code>) استفاده کن. ARIA اشتباه از نبودنش بدتره.</p></div></details>
+        <div class="warn">⚠️ نمره‌ی ۱۰۰ دسترسی‌پذیری یعنی خطاهای «قابل‌تشخیص خودکار» رو نداری، نه اینکه سایتت کاملاً دسترسی‌پذیره. یه بار هم خودت فقط با کیبورد (Tab و Enter) سایت رو بگرد. 🎹</div>
+      </div>
+      <button class="done-btn" data-done="l10" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۱۱ ===================== -->
+    <section class="lesson" id="l11" data-title="Best Practices و SEO">
+      <div class="lesson-head"><div class="badge">🛡️</div><div><div class="meta">درس ۱۱ · ۱۲ دقیقه</div><h2>Best Practices و SEO: نمره‌های آسون و مهم</h2></div></div>
+      <div class="prose">
+        <div class="tldr"><b>خلاصه:</b> این دو بخش بیشتر «چک‌لیستی»ان؛ یه بار درستشون کنی، معمولاً سبز می‌مونن.</div>
+        <h3>✅ Best Practices</h3>
+        <ul>
+          <li>🔒 <b>HTTPS</b> برای کل سایت، بدون محتوای مخلوط (عکس یا اسکریپتی که با http لود بشه).</li>
+          <li>🧯 <b>خطای کنسول نداشته باش.</b> DevTools رو باز کن، تب Console، هرچی قرمزه رو درست کن.</li>
+          <li>🖼️ عکس‌ها با <b>نسبت ابعاد درست</b> و <b>رزولوشن کافی</b> نمایش داده بشن (کش‌آمده یا تار نباشن).</li>
+          <li>⛔ از APIهای <b>منسوخ</b> و قدیمی مرورگر استفاده نکن.</li>
+          <li>🔔 بدون کلیک کاربر، اجازه‌ی <b>نوتیفیکیشن یا موقعیت مکانی</b> نخواه.</li>
+          <li>🧷 هدرهای امنیتی مثل <b>CSP</b>، <b>HSTS</b> و <b>COOP</b> رو تنظیم کن. این‌ها بیشتر به‌صورت توصیه نشون داده می‌شن.</li>
+          <li>🍪 وابستگی به <b>کوکی‌های شخص ثالث</b> رو کم کن؛ مرورگرها دارن محدودشون می‌کنن.</li>
+        </ul>
+        <h3>🔎 SEO (سئوی پایه)</h3>
+        <ul>
+          <li>🏷️ هر صفحه یه <code>&lt;title&gt;</code> یکتا و یه <code>meta description</code> جذاب داشته باشه.</li>
+          <li>🚦 کد وضعیت HTTP صفحه <b>۲۰۰</b> باشه، نه ۴۰۴ یا ۵۰۰.</li>
+          <li>🚫 صفحه با <code>noindex</code> یا <code>robots.txt</code> اشتباهی از ایندکس بسته نشده باشه.</li>
+          <li>🔗 لینک‌ها قابل‌خزیدن باشن (<code>&lt;a href="…"&gt;</code> واقعی) و متن لینک توصیفی باشه، نه «اینجا کلیک کنید».</li>
+          <li>🖼️ عکس‌ها <code>alt</code> داشته باشن.</li>
+          <li>🌍 اگه سایت چندزبانه است، <code>hreflang</code> و <code>canonical</code> درست تنظیم بشن.</li>
+          <li>🧩 داده‌ی ساختاریافته (Schema) رو با ابزار Rich Results Test گوگل چک کن.</li>
+        </ul>
+        <div class="warn">⚠️ نمره‌ی ۱۰۰ سئو توی PSI یعنی «پایه‌ها درسته»، نه اینکه رتبه‌ی یک می‌گیری! محتوای خوب، لینک‌سازی و نیت جست‌وجو هنوز حرف اول رو می‌زنن. 😉</div>
+        <div class="note">📌 از Lighthouse 12 دسته‌ی PWA حذف شده. اگه آموزشی از نمره‌ی PWA حرف زد، قدیمیه.</div>
+      </div>
+      <button class="done-btn" data-done="l11" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۱۲ ===================== -->
+    <section class="lesson" id="l12" data-title="روش کار و ابزارها">
+      <div class="lesson-head"><div class="badge">🧰</div><div><div class="meta">درس ۱۲ · ۱۰ دقیقه</div><h2>روش کار حرفه‌ای: از تست تا سبز شدن</h2></div></div>
+      <div class="prose">
+        <div class="tldr"><b>خلاصه:</b> اندازه بگیر ← اولویت بده ← یه تغییر بده ← دوباره اندازه بگیر. هیچ‌وقت ده تا کار رو با هم نکن.</div>
+        <ol class="steps">
+          <li><b>صفحه‌های مهم رو انتخاب کن:</b> صفحه‌ی اصلی، پربازدیدترین مقاله‌ها، صفحه‌ی محصول و صفحه‌ی پرداخت. هر قالب صفحه رو جدا تست کن.</li>
+          <li><b>اول موبایل:</b> بیشتر کاربرها با موبایل میان و گوگل هم موبایل رو ملاک می‌ذاره.</li>
+          <li><b>۳ تا ۵ بار تست بگیر</b> و عدد میانه رو یادداشت کن، نه بهترین رو.</li>
+          <li><b>بدترین معیار رو پیدا کن</b> و با فیلتر Insights ببین چی روش اثر داره.</li>
+          <li><b>یه تغییر بده،</b> دوباره تست کن. اینجوری می‌فهمی کدوم کار واقعاً اثر داشته.</li>
+          <li><b>صبر کن:</b> داده‌ی واقعی ۲۸ روزه است. توی Search Console هم بعد از رفع مشکل، دکمه‌ی Validate Fix رو بزن.</li>
+        </ol>
+        <h3>🧰 جعبه‌ابزار رایگان</h3>
+        <ul>
+          <li><b>PageSpeed Insights:</b> نقطه‌ی شروع؛ داده‌ی واقعی و آزمایشگاهی با هم.</li>
+          <li><b>گزارش Core Web Vitals توی Google Search Console:</b> همه‌ی صفحه‌های سایت رو گروه‌بندی می‌کنه و می‌گه کدوم گروه مشکل داره.</li>
+          <li><b>تب Lighthouse و Performance در Chrome DevTools:</b> برای تست صفحه‌های محلی، صفحه‌های پشت لاگین و دیدن جزئیات هر میلی‌ثانیه.</li>
+          <li><b>تب Network:</b> برای دیدن ترتیب و حجم همه‌ی درخواست‌ها.</li>
+          <li><b>WebPageTest:</b> برای تست از کشورها و سرعت‌های اینترنت مختلف و دیدن فیلم لود صفحه.</li>
+          <li><b>Lighthouse CI:</b> برای برنامه‌نویس‌ها؛ هر بار که کد تغییر کرد خودکار تست کنه تا سرعت یواشکی بدتر نشه.</li>
+        </ul>
+<pre><code><span class="c-com"># اجرای Lighthouse از خط فرمان (نیاز به Node.js)</span>
+npm install -g lighthouse
+lighthouse https://example.com --view --preset=desktop</code></pre>
+        <h3>🌐 چند نکته برای سایت‌های ایرانی</h3>
+        <ul>
+          <li>تست PSI از سرورهای گوگل خارج از ایران انجام می‌شه. اگه هاستت داخل ایرانه، TTFB توی تست ممکنه بدتر از تجربه‌ی واقعی کاربرهای ایرانی باشه، و برعکس.</li>
+          <li>فونت فارسی رو روی هاست خودت بذار (self-host) و فقط وزن‌هایی که لازمه رو لود کن. هم سریع‌تره، هم به سرویس‌های بیرونی وابسته نیستی.</li>
+          <li>اسکریپت‌های سرویس‌های بیرونی (چت، آمار، اینماد، تبلیغات) رو یکی‌یکی بررسی کن؛ معمولاً بزرگ‌ترین منبع TBT هستن.</li>
+        </ul>
+      </div>
+      <button class="done-btn" data-done="l12" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۱۳ ===================== -->
+    <section class="lesson" id="l13" data-title="وردپرس و باورهای غلط">
+      <div class="lesson-head"><div class="badge">🧙</div><div><div class="meta">درس ۱۳ · ۱۰ دقیقه</div><h2>نکته‌های وردپرس و باورهای غلط رایج</h2></div></div>
+      <div class="prose">
+        <h3>🧩 اگه سایتت وردپرسیه</h3>
+        <ul>
+          <li><b>یه افزونه‌ی کش خوب</b> نصب کن (فقط یکی! دو تا افزونه‌ی کش با هم دعوا می‌کنن).</li>
+          <li><b>عکس‌ها</b> رو موقع آپلود به WebP یا AVIF تبدیل کن و lazy load رو برای عکس اول صفحه خاموش کن.</li>
+          <li><b>افزونه‌های اضافه</b> رو پاک کن. هر افزونه ممکنه CSS و JS خودش رو توی همه‌ی صفحه‌ها لود کنه.</li>
+          <li><b>صفحه‌سازهای سنگین</b> و اسلایدرهای بالای صفحه معمولاً مقصر اصلی LCP و TBT هستن. یه قالب سبک خیلی وقت‌ها از ده تا افزونه‌ی بهینه‌سازی بیشتر اثر داره.</li>
+          <li>نسخه‌ی <b>PHP</b> رو به‌روز نگه دار؛ نسخه‌های جدیدتر سریع‌ترن.</li>
+        </ul>
+        <h3>🙅 باورهای غلط</h3>
+        <details class="acc" open><summary>❌ «باید حتماً ۱۰۰ بگیرم»</summary><div class="body"><p>نه! خود مستندات Lighthouse می‌گه نمره‌ی ۱۰۰ خیلی سخته و انتظارش نمی‌ره. هدف واقعی، قبول شدن Core Web Vitals توی داده‌ی واقعیه. سایتی با نمره‌ی ۸۵ و Core Web Vitals سبز، از سایتی با نمره‌ی ۹۹ و کاربرهای ناراضی بهتره.</p></div></details>
+        <details class="acc"><summary>❌ «نمره‌ی PSI مستقیماً رتبه‌ی گوگل رو تعیین می‌کنه»</summary><div class="body"><p>گوگل از داده‌ی <b>واقعی</b> Core Web Vitals به‌عنوان یکی از سیگنال‌های تجربه‌ی صفحه استفاده می‌کنه، نه از نمره‌ی آزمایشگاهی. و این سیگنال در برابر کیفیت و ارتباط محتوا وزن کمی داره. سرعت «تساوی‌شکن»ـه، نه جادو. 🪄</p></div></details>
+        <details class="acc"><summary>❌ «یه افزونه نصب کنم، همه چیز درست می‌شه»</summary><div class="body"><p>افزونه‌ها کمک می‌کنن، ولی نمی‌تونن یه قالب سنگین، هاست کند یا ۱۵ اسکریپت تبلیغاتی رو جبران کنن. گاهی هم با ترفندهای نمایشی فقط نمره‌ی آزمایشگاهی رو بالا می‌برن و کاربر واقعی هیچ فرقی حس نمی‌کنه.</p></div></details>
+        <details class="acc"><summary>❌ «نمره‌م دیروز ۹۲ بود، امروز ۸۴؛ سایتم خراب شد!»</summary><div class="body"><p>نوسان چند نمره‌ای کاملاً طبیعیه. شبکه، بار سرور و اسکریپت‌های بیرونی هر لحظه فرق می‌کنن. چند بار تست بگیر و روند رو ببین، نه یه عدد تکی رو.</p></div></details>
+        <details class="acc"><summary>❌ «دسکتاپم ۹۸ـه، پس مشکلی ندارم»</summary><div class="body"><p>تست موبایل با گوشی ضعیف‌تر و اینترنت کندتر شبیه‌سازی می‌شه و بیشتر کاربرهات هم با موبایل میان. ملاک اصلی، موبایله. 📱</p></div></details>
+      </div>
+      <button class="done-btn" data-done="l13" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+
+    <!-- ===================== ۱۴ ===================== -->
+    <section class="lesson" id="l14" data-title="چک‌لیست نهایی + آزمونک">
+      <div class="lesson-head"><div class="badge">🏁</div><div><div class="meta">درس ۱۴ · جمع‌بندی</div><h2>چک‌لیست نهایی و آزمونک</h2></div></div>
+      <div class="prose">
+        <p>این چک‌لیست رو برای سایت خودت تیک بزن. توی همین مرورگر ذخیره می‌شه و دفعه‌ی بعد سر جاشه. ✍️</p>
+        <div class="chk" id="checklist">
+          <h4>🖼️ LCP</h4>
+          <label><input type="checkbox" data-k="c1"> عکس بالای صفحه lazy نیست و <code>fetchpriority="high"</code> داره</label>
+          <label><input type="checkbox" data-k="c2"> عکس‌ها WebP یا AVIF هستن و با <code>srcset</code> به‌اندازه فرستاده می‌شن</label>
+          <label><input type="checkbox" data-k="c3"> کش صفحه و CDN فعاله و TTFB زیر ۰٫۸ ثانیه است</label>
+          <label><input type="checkbox" data-k="c4"> ریدایرکت زنجیره‌ای ندارم و Brotli یا Gzip روشنه</label>
+          <h4>👆 INP و TBT</h4>
+          <label><input type="checkbox" data-k="c5"> اسکریپت‌ها <code>defer</code> یا <code>async</code> هستن</label>
+          <label><input type="checkbox" data-k="c6"> JS و افزونه‌های بی‌استفاده رو حذف کردم</label>
+          <label><input type="checkbox" data-k="c7"> اسکریپت‌های شخص ثالث رو بررسی کردم و ویدیو و نقشه Facade دارن</label>
+          <label><input type="checkbox" data-k="c8"> کارهای طولانی JS رو تیکه‌تیکه کردم</label>
+          <h4>📐 CLS</h4>
+          <label><input type="checkbox" data-k="c9"> همه‌ی عکس‌ها و ویدیوها <code>width</code> و <code>height</code> یا <code>aspect-ratio</code> دارن</label>
+          <label><input type="checkbox" data-k="c10"> جای تبلیغ‌ها و بنرها از قبل رزرو شده</label>
+          <label><input type="checkbox" data-k="c11"> فونت‌ها <code>font-display: swap</code> دارن و preload شدن</label>
+          <h4>🧱 شبکه و منابع</h4>
+          <label><input type="checkbox" data-k="c12"> CSS ضروری inline شده و CSS بی‌استفاده حذف شده</label>
+          <label><input type="checkbox" data-k="c13"> فایل‌های ثابت کش طولانی دارن</label>
+          <label><input type="checkbox" data-k="c14"> سرور HTTP/2 یا HTTP/3 داره و تگ viewport درسته</label>
+          <h4>♿ دسترسی‌پذیری، ✅ اصول درست و 🔎 سئو</h4>
+          <label><input type="checkbox" data-k="c15"> کنتراست رنگ‌ها کافیه و عکس‌ها <code>alt</code> دارن</label>
+          <label><input type="checkbox" data-k="c16"> دکمه‌های آیکونی <code>aria-label</code> و فرم‌ها <code>label</code> دارن</label>
+          <label><input type="checkbox" data-k="c17"> HTTPS کامل و کنسول بدون خطاست</label>
+          <label><input type="checkbox" data-k="c18"> هر صفحه title و description یکتا داره و noindex اشتباهی نداره</label>
+        </div>
+        <p style="margin-top:1rem"><b id="chkTxt">۰ از ۱۸ مورد</b> 💪</p>
+
+        <h3>🧠 آزمونک: ببینیم چقدر یاد گرفتی!</h3>
+        <div id="quiz"></div>
+        <p>امتیاز تو: <span id="quizScore">هنوز جوابی ندادی</span></p>
+        <div class="tip">🎉 <b>تبریک!</b> اگه تا اینجا اومدی، الان از خیلی‌ها بهتر می‌دونی PageSpeed Insights چی می‌گه. حالا برو سایت خودت رو تست کن و از درس ۱۲ شروع کن. 🚀</div>
+      </div>
+      <button class="done-btn" data-done="l14" aria-pressed="false">☐ این درس رو خوندم</button>
+    </section>
+  </main>
+</div>
+
+<footer>
+  ساخته‌شده با ❤️ برای وب فارسی سریع‌تر · مطالب بر اساس Lighthouse 13 و مستندات web.dev ·
+  <a href="https://pagespeed.web.dev/" rel="noopener" target="_blank">رفتن به PageSpeed Insights</a>
+  <br>این صفحه هیچ عکسی نداره، CSS و JSـش داخل خود فایله و فونتش با <code>display=swap</code> لود می‌شه؛ یعنی خودش هم تمرین همین دوره است. 😉
+</footer>
+
+<button class="btn-ic" id="toTop" aria-label="برگشت به بالای صفحه">⬆️</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var d=document.documentElement;
+  var fa=function(x){return String(x).replace(/\d/g,function(c){return '۰۱۲۳۴۵۶۷۸۹'[c]}).replace(/\./g,'٫')};
+  var store={
+    get:function(k,def){try{var v=localStorage.getItem(k);return v?JSON.parse(v):def}catch(e){return def}},
+    set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+  };
+  var S=store.get('psc-settings',{});
+  function save(){store.set('psc-settings',S)}
+  function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show')},1800)}
+
+  /* ---------- theme ---------- */
+  function applyTheme(t){
+    d.setAttribute('data-theme',t);
+    document.getElementById('themeIc').textContent=t==='dark'?'☀️':'🌙';
+    document.getElementById('themeLbl').textContent=t==='dark'?'حالت روشن':'حالت تیره';
+    document.querySelectorAll('#themeSeg button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.t===t)});
+  }
+  applyTheme(d.getAttribute('data-theme'));
+  function setTheme(t){S.theme=t;save();applyTheme(t)}
+  document.getElementById('themeBtn').onclick=function(){setTheme(d.getAttribute('data-theme')==='dark'?'light':'dark')};
+  document.querySelectorAll('#themeSeg button').forEach(function(b){b.onclick=function(){setTheme(b.dataset.t)}});
+
+  /* ---------- settings panel ---------- */
+  var panel=document.getElementById('settings'),setBtn=document.getElementById('setBtn');
+  setBtn.onclick=function(e){e.stopPropagation();var o=panel.classList.toggle('open');setBtn.setAttribute('aria-expanded',o)};
+  document.addEventListener('click',function(e){if(!panel.contains(e.target)&&e.target!==setBtn){panel.classList.remove('open');setBtn.setAttribute('aria-expanded',false)}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){panel.classList.remove('open');closeToc()}});
+
+  var fs=S.fs||100,lh=S.lh||1.95,w=S.w||'780px';
+  function applyType(){
+    d.style.setProperty('--fs',fs+'%');d.style.setProperty('--lh',lh);d.style.setProperty('--maxw',w);
+    document.getElementById('fsVal').textContent=fa(fs)+'٪';
+    document.getElementById('lhVal').textContent=fa(Number(lh).toFixed(2));
+    document.getElementById('lhRange').value=lh;
+    document.querySelectorAll('#widthSeg button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.w===w)});
+  }
+  applyType();
+  document.getElementById('fsUp').onclick=function(){fs=Math.min(150,fs+10);S.fs=fs;save();applyType()};
+  document.getElementById('fsDown').onclick=function(){fs=Math.max(80,fs-10);S.fs=fs;save();applyType()};
+  document.getElementById('lhRange').oninput=function(){lh=+this.value;S.lh=lh;save();applyType()};
+  document.querySelectorAll('#widthSeg button').forEach(function(b){b.onclick=function(){w=b.dataset.w;S.w=w;save();applyType()}});
+  document.getElementById('resetSet').onclick=function(){fs=100;lh=1.95;w='780px';delete S.fs;delete S.lh;delete S.w;save();applyType();toast('تنظیمات متن برگشت به حالت پیش‌فرض ✨')};
+
+  /* ---------- TOC + progress ---------- */
+  var lessons=[].slice.call(document.querySelectorAll('section.lesson'));
+  var list=document.getElementById('tocList');
+  var done=store.get('psc-done',{});
+  lessons.forEach(function(s,i){
+    var li=document.createElement('li');
+    li.innerHTML='<a href="#'+s.id+'"><span class="num">'+fa(i+1)+'</span><span></span></a>';
+    li.querySelector('span:last-child').textContent=s.dataset.title;
+    list.appendChild(li);
+  });
+  function renderDone(){
+    var n=0;
+    lessons.forEach(function(s){
+      var on=!!done[s.id];if(on)n++;
+      var a=list.querySelector('a[href="#'+s.id+'"]');a.classList.toggle('done',on);
+      a.querySelector('.num').textContent=on?'✓':fa(lessons.indexOf(s)+1);
+      var b=s.querySelector('.done-btn');b.setAttribute('aria-pressed',on);b.textContent=on?'✅ خوندمش! (برای برداشتن تیک بزن)':'☐ این درس رو خوندم';
+    });
+    var p=Math.round(n/lessons.length*100);
+    document.getElementById('progBar').style.width=p+'%';
+    document.getElementById('progTxt').textContent=fa(p)+'٪';
+    return n;
+  }
+  renderDone();
+  document.querySelectorAll('.done-btn').forEach(function(b){b.onclick=function(){
+    var id=b.dataset.done;done[id]=!done[id];store.set('psc-done',done);var n=renderDone();
+    if(done[id]){toast(n===lessons.length?'🏆 کل دوره رو تموم کردی! دمت گرم!':'آفرین! '+fa(n)+' از '+fa(lessons.length)+' درس 🎯')}
+  }});
+
+  /* active section + reading bar */
+  var links=list.querySelectorAll('a');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});
+    lessons.forEach(function(s){io.observe(s)});
+  }
+  var bar=document.querySelector('#readbar span'),toTop=document.getElementById('toTop'),ticking=false;
+  window.addEventListener('scroll',function(){if(ticking)return;ticking=true;requestAnimationFrame(function(){
+    var h=d.scrollHeight-innerHeight;bar.style.width=(h>0?scrollY/h*100:0)+'%';toTop.classList.toggle('show',scrollY>800);ticking=false})},{passive:true});
+  toTop.onclick=function(){scrollTo({top:0})};
+
+  /* mobile toc */
+  var toc=document.getElementById('toc'),scrim=document.getElementById('scrim'),mb=document.getElementById('menuBtn');
+  function closeToc(){toc.classList.remove('open');scrim.classList.remove('show');mb.setAttribute('aria-expanded',false)}
+  mb.onclick=function(){toc.classList.add('open');scrim.classList.add('show');mb.setAttribute('aria-expanded',true)};
+  scrim.onclick=closeToc;list.addEventListener('click',function(e){if(e.target.closest('a'))closeToc()});
+
+  /* hero gauge */
+  setTimeout(function(){
+    document.getElementById('heroRing').style.strokeDashoffset='0';
+    var n=0,el=document.getElementById('heroNum');var it=setInterval(function(){n+=4;if(n>=100){n=100;clearInterval(it)}el.textContent=fa(n)},50);
+  },300);
+
+  /* ---------- Lighthouse score calculator (log-normal curves, Lighthouse 10+ weights) ---------- */
+  var CURVES={
+    mobile:{FCP:[1800,3000],SI:[3387,5800],LCP:[2500,4000],TBT:[200,600],CLS:[0.1,0.25]},
+    desktop:{FCP:[934,1600],SI:[1311,2300],LCP:[1200,2400],TBT:[150,350],CLS:[0.1,0.25]}
+  };
+  var W={FCP:.10,SI:.10,LCP:.25,TBT:.30,CLS:.25};
+  function erf(x){var s=x<0?-1:1;x=Math.abs(x);var t=1/(1+0.3275911*x);
+    var y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x);return s*y}
+  function lnScore(p10,median,v){
+    if(v<=0)return 1;
+    var INV=0.9061938024368232;
+    var std=Math.log(v/median)*INV/(-Math.log(p10/median));
+    var s=(1-erf(std))/2;
+    return Math.min(1,Math.max(0,s));
+  }
+  var dev='mobile';
+  var ids=['FCP','SI','LCP','TBT','CLS'];
+  function color(s){return s>=90?'var(--good)':s>=50?'var(--avg)':'var(--poor)'}
+  function calc(){
+    var total=0,parts=[];
+    ids.forEach(function(k){
+      var raw=+document.getElementById('c'+k).value;
+      var v=(k==='TBT'||k==='CLS')?raw:raw*1000;
+      var c=CURVES[dev][k];var sc=lnScore(c[0],c[1],v);
+      total+=sc*W[k];
+      document.getElementById('o'+k).textContent=(k==='TBT'?raw+' ms':k==='CLS'?raw.toFixed(2):raw.toFixed(1)+' s');
+      parts.push(k+': '+fa(Math.round(sc*W[k]*100))+' از '+fa(W[k]*100));
+    });
+    var score=Math.round(total*100);
+    document.getElementById('calcNum').textContent=fa(score);
+    document.getElementById('calcNum').parentNode.parentNode.style.color=color(score).replace('var(--good)','var(--good-t)').replace('var(--avg)','var(--avg-t)').replace('var(--poor)','var(--poor-t)');
+    var ring=document.getElementById('calcRing');ring.style.strokeDashoffset=326.7*(1-score/100);ring.style.stroke=color(score);
+    document.getElementById('contrib').innerHTML='<b>سهم هر معیار:</b><br>'+parts.map(function(p){return '<bdi>'+p.split(':')[0]+'</bdi>:'+p.split(':')[1]}).join('<br>');
+  }
+  ids.forEach(function(k){document.getElementById('c'+k).addEventListener('input',calc)});
+  document.querySelectorAll('#devSeg button').forEach(function(b){b.onclick=function(){dev=b.dataset.dev;document.querySelectorAll('#devSeg button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});calc()}});
+  calc();
+
+  /* ---------- checklist ---------- */
+  var ck=store.get('psc-check',{});
+  var boxes=document.querySelectorAll('#checklist input');
+  function renderChk(){var n=0;boxes.forEach(function(b){if(b.checked)n++});document.getElementById('chkTxt').textContent=fa(n)+' از '+fa(boxes.length)+' مورد انجام شده';}
+  boxes.forEach(function(b){b.checked=!!ck[b.dataset.k];b.onchange=function(){ck[b.dataset.k]=b.checked;store.set('psc-check',ck);renderChk()}});
+  renderChk();
+
+  /* ---------- quiz ---------- */
+  var Q=[
+    {q:'کدوم بخش PSI برای رتبه‌بندی گوگل مهم‌تره؟',o:['نمره‌ی ۰ تا ۱۰۰ آزمایشگاهی','داده‌ی واقعی کاربرها (Core Web Vitals)','تعداد Insightهای سبز'],a:1,w:'گوگل از داده‌ی واقعی کاربرهای Chrome در ۲۸ روز گذشته استفاده می‌کنه، نه از نمره‌ی آزمایشگاهی.'},
+    {q:'بیشترین وزن توی نمره‌ی Performance مال کدوم معیاره؟',o:['FCP','LCP','TBT'],a:2,w:'TBT با ۳۰٪ بیشترین وزن رو داره؛ بعدش LCP و CLS هرکدوم ۲۵٪.'},
+    {q:'بنر بالای صفحه‌ت LCP شده و کنده. کدوم کار اشتباهه؟',o:['اضافه کردن fetchpriority="high"','تبدیلش به AVIF','اضافه کردن loading="lazy"'],a:2,w:'عکس LCP نباید lazy باشه، چون مرورگر دیرتر دانلودش می‌کنه.'},
+    {q:'INP خوب چقدره؟',o:['۲۰۰ میلی‌ثانیه یا کمتر','۲٫۵ ثانیه یا کمتر','۰٫۱ یا کمتر'],a:0,w:'INP خوب ۲۰۰ میلی‌ثانیه یا کمتره. ۲٫۵ ثانیه مال LCP و ۰٫۱ مال CLS است.'},
+    {q:'بهترین راه جلوگیری از CLS برای عکس‌ها چیه؟',o:['فشرده‌سازی بیشتر عکس','مشخص کردن width و height یا aspect-ratio','گذاشتن عکس توی CSS'],a:1,w:'وقتی ابعاد مشخص باشه، مرورگر از قبل جای عکس رو نگه می‌داره و چیزی نمی‌پره.'},
+    {q:'چرا توی تست آزمایشگاهی INP نمی‌بینیم؟',o:['چون گوگل حذفش کرده','چون کسی توی تست کلیک نمی‌کنه و TBT نماینده‌شه','چون فقط برای دسکتاپه'],a:1,w:'تست آزمایشگاهی تعامل واقعی نداره؛ برای همین TBT به‌عنوان نماینده‌ی INP استفاده می‌شه.'}
+  ];
+  var qbox=document.getElementById('quiz'),right=0,answered=0;
+  Q.forEach(function(it,i){
+    var div=document.createElement('div');div.className='q';
+    var html='<p>'+fa(i+1)+'. '+it.q+'</p>';
+    it.o.forEach(function(op,j){html+='<label><input type="radio" name="q'+i+'" value="'+j+'"><span></span></label>'});
+    html+='<div class="why"></div>';div.innerHTML=html;
+    div.querySelectorAll('label span').forEach(function(sp,j){sp.textContent=it.o[j]});
+    div.querySelector('.why').textContent='💡 '+it.w;
+    div.querySelectorAll('input').forEach(function(inp){inp.onchange=function(){
+      if(div.classList.contains('answered'))return;
+      div.classList.add('answered');answered++;
+      var j=+inp.value,labs=div.querySelectorAll('label');
+      labs[it.a].classList.add('right');
+      if(j===it.a){right++}else{labs[j].classList.add('wrong')}
+      div.querySelectorAll('input').forEach(function(x){x.disabled=true});
+      var msg=fa(right)+' از '+fa(Q.length);
+      if(answered===Q.length){msg+=right===Q.length?' 🏆 عالی بود!':right>=4?' 👏 خیلی خوب!':' 🙂 یه نگاه دیگه به درس‌ها بنداز.'}
+      document.getElementById('quizScore').textContent=msg;
+    }});
+    qbox.appendChild(div);
+  });
+})();
+</script>
+</body>
+</html>
