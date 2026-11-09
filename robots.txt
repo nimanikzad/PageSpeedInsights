@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nimanikzad.github.io/PageSpeedInsights/sitemap.xml

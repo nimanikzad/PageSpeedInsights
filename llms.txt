@@ -1,0 +1,20 @@
+# آموزش کامل PageSpeed Insights از صفر تا صد
+
+> مینی‌دوره‌ی رایگان و فارسی برای بهینه‌سازی سایت بر اساس معیارهای PageSpeed Insights و Lighthouse 13: Core Web Vitals (LCP، INP، CLS)، FCP، TBT، Speed Index، دسترسی‌پذیری، Best Practices و سئوی پایه.
+
+## درس‌ها
+
+- [درس ۱: PageSpeed Insights چیه؟](https://nimanikzad.github.io/PageSpeedInsights/#l1): داده‌ی واقعی (CrUX) در برابر تست آزمایشگاهی (Lighthouse)
+- [درس ۲: خوندن کارنامه](https://nimanikzad.github.io/PageSpeedInsights/#l2): چهار دسته‌ی نمره و رنگ‌ها
+- [درس ۳: Core Web Vitals](https://nimanikzad.github.io/PageSpeedInsights/#l3): مرزهای LCP، INP و CLS
+- [درس ۴: محاسبه‌ی نمره‌ی Performance](https://nimanikzad.github.io/PageSpeedInsights/#l4): وزن معیارها و ماشین‌حساب
+- [درس ۵: بهینه‌سازی LCP](https://nimanikzad.github.io/PageSpeedInsights/#l5)
+- [درس ۶: بهینه‌سازی INP و TBT](https://nimanikzad.github.io/PageSpeedInsights/#l6)
+- [درس ۷: بهینه‌سازی CLS](https://nimanikzad.github.io/PageSpeedInsights/#l7)
+- [درس ۸: منابع مسدودکننده، کش و شبکه](https://nimanikzad.github.io/PageSpeedInsights/#l8)
+- [درس ۹: فرهنگ لغت Insights](https://nimanikzad.github.io/PageSpeedInsights/#l9)
+- [درس ۱۰: دسترسی‌پذیری](https://nimanikzad.github.io/PageSpeedInsights/#l10)
+- [درس ۱۱: Best Practices و SEO](https://nimanikzad.github.io/PageSpeedInsights/#l11)
+- [درس ۱۲: روش کار و ابزارها](https://nimanikzad.github.io/PageSpeedInsights/#l12)
+- [درس ۱۳: وردپرس و باورهای غلط](https://nimanikzad.github.io/PageSpeedInsights/#l13)
+- [درس ۱۴: چک‌لیست نهایی و آزمونک](https://nimanikzad.github.io/PageSpeedInsights/#l14)
